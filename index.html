@@ -5,21 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Bombonera Comidas | Pedidos</title>
   
-  <!-- OneSignal Web SDK Integration -->
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-  <script>
-    window.OneSignalDeferred = window.OneSignalDeferred || [];
-    OneSignalDeferred.push(async function(OneSignal) {
-      await OneSignal.init({
-        appId: "4f050a40-af5e-4fa5-8af2-152c582499e5",
-        safari_web_id: "web.onesignal.auto.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        notifyButton: {
-          enable: true,
-        },
-      });
-    });
-  </script>
-
   <style>
     body {
       background-color: #000;
@@ -94,16 +79,14 @@
       z-index: 1;
     }
 
-    /* CONTENEDOR DEL TÍTULO CENTRADO PERFECTAMENTE */
+    /* CONTENEDOR DEL TÍTULO CENTRADO */
     .titulo-container {
       text-align: center;
       margin-bottom: 25px;
-      cursor: pointer;
       user-select: none;
-      -webkit-tap-highlight-color: transparent;
     }
 
-    /* TÍTULO REFLECTANTE Y TITILANTE SIN RAYITOS */
+    /* TÍTULO REFLECTANTE Y TITILANTE */
     .titulo-reflectante {
       display: inline-block;
       font-size: 26px;
@@ -333,87 +316,6 @@
       cursor: pointer;
       box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
     }
-
-    /* MODAL ADMIN NOTIFICACIONES PUSH - AMPLIADO Y MEJORADO */
-    #modalAdminPush {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 9999;
-      padding: 15px;
-      box-sizing: border-box;
-      align-items: center;
-      justify-content: center;
-      overflow-y: auto;
-    }
-
-    .admin-box {
-      width: 100%;
-      max-width: 460px;
-      background: #121212;
-      border: 2px solid #ffb703;
-      border-radius: 16px;
-      padding: 22px;
-      box-shadow: 0 0 30px rgba(255, 183, 3, 0.5);
-      position: relative;
-      margin: auto;
-    }
-
-    .admin-welcome {
-      background: rgba(255, 183, 3, 0.1);
-      border-left: 4px solid #ffb703;
-      padding: 10px 12px;
-      font-size: 13px;
-      color: #ffca28;
-      border-radius: 4px;
-      margin-bottom: 15px;
-      line-height: 1.4;
-    }
-
-    .quick-promos-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 15px;
-    }
-
-    .btn-quick-promo {
-      background: #1a1a1a;
-      border: 1px solid #444;
-      color: #fff;
-      padding: 8px 10px;
-      border-radius: 6px;
-      font-size: 11px;
-      font-weight: bold;
-      cursor: pointer;
-      text-align: left;
-      transition: all 0.2s ease;
-    }
-
-    .btn-quick-promo:hover {
-      border-color: #ffb703;
-      background: #252525;
-      color: #ffb703;
-    }
-
-    .btn-push-send {
-      width: 100%;
-      padding: 14px;
-      background: #ffb703;
-      color: #000;
-      font-weight: 900;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      text-transform: uppercase;
-      box-shadow: 0 0 12px rgba(255, 183, 3, 0.5);
-      margin-top: 5px;
-    }
   </style>
 </head>
 <body>
@@ -431,8 +333,8 @@
   </div>
 
   <div class="container">
-    <!-- TÍTULO CENTRADO CON DISPARADOR SECRETO DE 5 TOQUES -->
-    <div class="titulo-container" onclick="registrarToqueAdmin()">
+    <!-- TÍTULO CENTRADO -->
+    <div class="titulo-container">
       <h1 class="titulo-reflectante">La Bombonera Comidas</h1>
     </div>
 
@@ -923,129 +825,12 @@
     </div>
   </div>
 
-  <!-- MODAL PANEL DE ADMINISTRACIÓN PUSH AMPLIADO -->
-  <div id="modalAdminPush">
-    <div class="admin-box">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid #333; padding-bottom:10px;">
-        <h3 style="margin:0; color:#ffb703; font-size:18px;">👑 Panel Exclusivo Dueños</h3>
-        <button onclick="cerrarPanelAdmin()" style="background:none; border:none; color:#ff4d4d; font-size:22px; font-weight:bold; cursor:pointer;">✕</button>
-      </div>
-
-      <div class="admin-welcome">
-        ⚡ <strong>¡Bienvenido al centro de control!</strong> Acabás de ingresar al panel de dueños. Desde acá vas a manejar todas las <strong>notificaciones push</strong> para promocionar tus hamburguesas, lomos y promos, activar llamados a la acción y enganchar a tus clientes al instante. 🍔🔥
-      </div>
-
-      <label style="font-size: 13px; color: #ffb703; font-weight: bold; margin-bottom: 6px;">💡 Sugerencias rápidas (Click para cargar):</label>
-      <div class="quick-promos-grid">
-        <button class="btn-quick-promo" onclick="cargarPromoRapida('🔥 ¡Promo Flash de Hamburguesas!', 'Pedí tu Caja de 4 Hamburguesas Completas y llevate fritas extra de regalo por tiempo limitado.')">🍔 Promo Flash</button>
-        <button class="btn-quick-promo" onclick="cargarPromoRapida('🍻 ¡Noche de Chivitos!', 'Llegó el fin de semana. Pedí tu Chivito en 2 o 3 panes con tremendo combo y disfrutá sin cocinar.')">🥩 Alerta Chivitos</button>
-        <button class="btn-quick-promo" onclick="cargarPromoRapida('⚡ ¡Caja Loca Activa!', 'Tenemos La Caja Loca disponible con panchos y fritas con cheddar y bacon. ¡Hacé tu pedido ya!')">🌭 Caja Loca</button>
-        <button class="btn-quick-promo" onclick="cargarPromoRapida('🚨 ¡Últimos pedidos abiertos!', 'La cocina sigue prendida fuego. Entrá a la app y hacé tu pedido antes de que cerremos.')">🚀 Últimos Pedidos</button>
-      </div>
-
-      <label>Título de la notificación:</label>
-      <input type="text" id="pushTitulo" placeholder="Ej: 🔥 ¡Promo hoy en La Bombonera!">
-
-      <label>Mensaje para los clientes:</label>
-      <textarea id="pushMensaje" rows="3" placeholder="Ej: Pedí tu Caja 4 Milanesas y te llevamos las papas de regalo."></textarea>
-
-      <label>Enlace opcional al tocar la notificación:</label>
-      <input type="url" id="pushUrl" placeholder="https://diegofromuru.github.io/labombonera-/">
-
-      <button class="btn-push-send" id="btnDispararPush" onclick="enviarPushClientes()">
-        🚀 Enviar Alerta Masiva a Todos
-      </button>
-
-      <p id="feedbackPush" style="font-size:13px; text-align:center; margin-top:12px; color:#ffb703; min-height:18px;"></p>
-    </div>
-  </div>
-
   <script>
     let tipoClienteSeleccionado = 'Cliente Nuevo';
     let carrito = [];
     
     const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtthYzSNDPpV9zlCqJ9eUszjQN_bISSQlEoOmViaxHO2ygo2_uGIpY0tf7X0CB7P1D/exec";
     const TELEFONO_WHATSAPP = "59898780297";
-
-    const PIN_ADMIN = "2026"; 
-
-    // LÓGICA DE 5 TOQUES SECRETOS EN EL TÍTULO
-    let contadorToques = 0;
-    let temporizadorToques = null;
-
-    function registrarToqueAdmin() {
-      contadorToques++;
-      clearTimeout(temporizadorToques);
-
-      if (contadorToques >= 5) {
-        contadorToques = 0;
-        const pinIngresado = prompt("🔐 Acceso exclusivo dueños.\nIngresá el PIN de administración:");
-        if (pinIngresado === PIN_ADMIN) {
-          document.getElementById("modalAdminPush").style.display = "flex";
-        } else if (pinIngresado !== null) {
-          alert("❌ PIN incorrecto.");
-        }
-      } else {
-        temporizadorToques = setTimeout(() => {
-          contadorToques = 0;
-        }, 1500);
-      }
-    }
-
-    function cerrarPanelAdmin() {
-      document.getElementById("modalAdminPush").style.display = "none";
-      document.getElementById("feedbackPush").textContent = "";
-    }
-
-    function cargarPromoRapida(titulo, mensaje) {
-      document.getElementById("pushTitulo").value = titulo;
-      document.getElementById("pushMensaje").value = mensaje;
-      document.getElementById("pushUrl").value = "https://diegofromuru.github.io/labombonera-/";
-    }
-
-    async function enviarPushClientes() {
-      const titulo = document.getElementById("pushTitulo").value.trim();
-      const mensaje = document.getElementById("pushMensaje").value.trim();
-      const urlDestino = document.getElementById("pushUrl").value.trim();
-      const feedback = document.getElementById("feedbackPush");
-      const btn = document.getElementById("btnDispararPush");
-
-      if (!titulo || !mensaje) {
-        feedback.textContent = "⚠️ Completá el título y el mensaje antes de enviar.";
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = "Enviando alerta...";
-      feedback.textContent = "";
-
-      const datosParaPush = {
-        action: "sendPush",
-        titulo: titulo,
-        mensaje: mensaje,
-        url: urlDestino || "https://diegofromuru.github.io/labombonera-/"
-      };
-
-      try {
-        await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(datosParaPush)
-        });
-
-        feedback.textContent = `✅ ¡Alerta masiva disparada con éxito!`;
-        document.getElementById("pushTitulo").value = "";
-        document.getElementById("pushMensaje").value = "";
-        document.getElementById("pushUrl").value = "";
-      } catch (err) {
-        feedback.textContent = `✅ ¡Alerta procesada correctamente!`;
-        console.error("Error al enviar push vía Sheets:", err);
-      } finally {
-        btn.disabled = false;
-        btn.textContent = "🚀 Enviar Alerta Masiva a Todos";
-      }
-    }
 
     function toggleAcordeon(cardId) {
       const card = document.getElementById(cardId);
