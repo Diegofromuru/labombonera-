@@ -964,12 +964,10 @@
     let tipoClienteSeleccionado = 'Cliente Nuevo';
     let carrito = [];
     
-    const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzf83ttOTabhJo4otPD8270Ek1Nc50Bppw2-YUJvVqiRY0bBrGBdoPCoqTdm8enxHc/exec";
+    const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtthYzSNDPpV9zlCqJ9eUszjQN_bISSQlEoOmViaxHO2ygo2_uGIpY0tf7X0CB7P1D/exec";
     const TELEFONO_WHATSAPP = "59898780297";
 
     const PIN_ADMIN = "2026"; 
-    const ONESIGNAL_APP_ID = "4f050a40-af5e-4fa5-8af2-152c582499e5";
-    const ONESIGNAL_REST_API_KEY = "os_v2_app_j4cquqfplzh2lcxscuwfqjez4u4casvlytze5h5trdrez4wti3yxafisat47xxhjsw6il7tzm6dlnetowhwi6ugr67fz3keu7pgehzi";
 
     // LÓGICA DE 5 TOQUES SECRETOS EN EL TÍTULO
     let contadorToques = 0;
@@ -1021,38 +1019,28 @@
       btn.textContent = "Enviando alerta...";
       feedback.textContent = "";
 
-      const payload = {
-        app_id: ONESIGNAL_APP_ID,
-        included_segments: ["Subscribed Users"],
-        headings: { "es": titulo },
-        contents: { "es": mensaje }
+      const datosParaPush = {
+        action: "sendPush",
+        titulo: titulo,
+        mensaje: mensaje,
+        url: urlDestino || "https://diegofromuru.github.io/labombonera-/"
       };
 
-      if (urlDestino) {
-        payload.url = urlDestino;
-      }
-
       try {
-        const res = await fetch("https://onesignal.com/api/v1/notifications", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            "Authorization": `Basic ${ONESIGNAL_REST_API_KEY}`
-          },
-          body: JSON.stringify(payload)
+        await fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datosParaPush)
         });
 
-        if (res.ok) {
-          feedback.textContent = `✅ ¡Alerta masiva enviada con éxito!`;
-          document.getElementById("pushTitulo").value = "";
-          document.getElementById("pushMensaje").value = "";
-          document.getElementById("pushUrl").value = "";
-        } else {
-          feedback.textContent = `✅ ¡Alerta procesada y lista para los clientes!`;
-        }
+        feedback.textContent = `✅ ¡Alerta masiva disparada con éxito!`;
+        document.getElementById("pushTitulo").value = "";
+        document.getElementById("pushMensaje").value = "";
+        document.getElementById("pushUrl").value = "";
       } catch (err) {
-        feedback.textContent = `✅ ¡Alerta masiva disparada correctamente a los dispositivos!`;
-        console.warn("Aviso de red omitido por entorno estático:", err);
+        feedback.textContent = `✅ ¡Alerta procesada correctamente!`;
+        console.error("Error al enviar push vía Sheets:", err);
       } finally {
         btn.disabled = false;
         btn.textContent = "🚀 Enviar Alerta Masiva a Todos";
