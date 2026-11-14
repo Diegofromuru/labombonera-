@@ -338,490 +338,542 @@
       <h1 class="titulo-reflectante">La Bombonera Comidas</h1>
     </div>
 
-    <!-- 1. Tipo de cliente -->
-    <div class="card active-accordion" id="cardCliente">
-      <h3 class="accordion-header" onclick="toggleAcordeon('cardCliente')">1. ¿Cómo nos visitás hoy?</h3>
-      <div class="accordion-content" style="max-height: none; padding-top: 12px; border-top: 1px solid #333; margin-top: 10px;">
-        <div class="client-type-group">
-          <button class="btn-type active" onclick="seleccionarTipoCliente('Cliente Nuevo', this)">🆕 Soy cliente nuevo</button>
-          <button class="btn-type" onclick="seleccionarTipoCliente('Cliente Frecuente', this)">🔁 Soy cliente frecuente</button>
-        </div>
+    <!-- SECCIÓN VALIDACIÓN DE MERCADO Y CAPTURA INICIAL (QR) -->
+    <div class="card" id="seccionValidacionQR" style="border: 2px solid #ffb703; background: rgba(15, 15, 15, 0.98); margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 12px;">
+        <span style="background: #ffb703; color: #000; font-size: 11px; font-weight: 900; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Prueba de Lanzamiento</span>
+        <h3 style="color: #ffb703; margin: 8px 0 4px 0; font-size: 19px;">⚡ ¿Te imaginás todo en un solo lugar? ⚡</h3>
+        <p style="font-size: 13px; color: #ccc; line-height: 1.4; margin: 0;">
+          Estamos creando una nueva app local para conectar <strong>gimnasios, tiendas de suplementos, ropa deportiva y raciones para mascotas</strong>. 
+        </p>
       </div>
-    </div>
 
-    <!-- 2. Menú de Productos -->
-    
-    <!-- Milanesas de Carne -->
-    <div class="card" id="catCarne">
-      <h3 class="accordion-header" onclick="toggleAcordeon('catCarne')">Milanesas de Carne</h3>
-      <div class="accordion-content">
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne en 1 pan común</h4>
-            <p>Lechuga, tomate, aderezos, huevo duro</p>
-            <span class="price">$200</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan común', 200)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne en 1 pan con fritas</h4>
-            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-            <span class="price">$240</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan con fritas', 240)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne en 2 panes común</h4>
-            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-            <span class="price">$470</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 2 panes común', 470)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne en 1 pan completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$320</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan completa con fritas', 320)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne en 2 panes completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$520</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 2 panes completa con fritas', 520)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne en 3 panes completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$640</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 3 panes completa con fritas', 640)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne en 4 panes completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$850</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 4 panes completa con fritas', 850)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Caja 4 milanesas (Carne)</h4>
-            <p>1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada</p>
-            <span class="price">$990</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Caja 4 milanesas (Carne)', 990)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Baño de Cheddar y Bacon a las papas</h4>
-            <p>Extra para acompañar tus papas</p>
-            <span class="price">$140</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Baño de Cheddar y Bacon a las papas', 140)">Agregar</button>
-        </div>
+      <div style="background: rgba(255, 183, 3, 0.05); border-left: 3px solid #ffb703; padding: 10px; border-radius: 4px; margin-bottom: 12px; font-size: 12px; color: #ffca28;">
+        💡 Contanos qué te parece para saber si hay demanda real y enterate antes que nadie. ¡Al terminar se abre la carta de La Bombonera! 👇
       </div>
-    </div>
 
-    <!-- Milanesas de Pollo -->
-    <div class="card" id="catPollo">
-      <h3 class="accordion-header" onclick="toggleAcordeon('catPollo')">Milanesas de Pollo</h3>
-      <div class="accordion-content">
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo en 1 pan común</h4>
-            <p>Aderezos, lechuga, tomate, huevo duro</p>
-            <span class="price">$180</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan común', 180)">Agregar</button>
-        </div>
+      <label style="font-size: 13px; color: #ccc; margin-top: 5px;">Tu Nombre:</label>
+      <input type="text" id="valNombre" placeholder="Ej: Juan Pérez" style="margin-bottom: 10px; padding: 10px;">
 
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo en 1 pan con fritas</h4>
-            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-            <span class="price">$210</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan con fritas', 210)">Agregar</button>
-        </div>
+      <label style="font-size: 13px; color: #ccc; margin-top: 0;">Tu Celular / WhatsApp:</label>
+      <input type="tel" id="valTelefono" placeholder="Ej: 099 123 456" style="margin-bottom: 12px; padding: 10px;">
 
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo en 2 panes común</h4>
-            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-            <span class="price">$410</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 2 panes común', 410)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo en 1 pan completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$300</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan completa con fritas', 300)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo en 2 panes completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$470</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 2 panes completa con fritas', 470)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo en 3 panes completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$600</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 3 panes completa con fritas', 600)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo en 4 panes completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$820</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 4 panes completa con fritas', 820)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Caja 4 milanesas (Pollo)</h4>
-            <p>1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada</p>
-            <span class="price">$900</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Caja 4 milanesas (Pollo)', 900)">Agregar</button>
-        </div>
+      <label style="font-size: 13px; color: #ffb703; font-weight: bold; margin-bottom: 6px;">¿Qué te interesaría encontrar más?</label>
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; font-size: 13px;">
+        <label style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" name="valRubro" value="Gimnasios" style="width: auto; margin: 0; accent-color: #ffb703;"> 💪 Gimnasios y entrenamiento
+        </label>
+        <label style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" name="valRubro" value="Suplementos" style="width: auto; margin: 0; accent-color: #ffb703;"> 💊 Tiendas de suplementos
+        </label>
+        <label style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" name="valRubro" value="Ropa Deportiva" style="width: auto; margin: 0; accent-color: #ffb703;"> 👕 Ropa y accesorios deportivos
+        </label>
+        <label style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+          <input type="checkbox" name="valRubro" value="Raciones Mascotas" style="width: auto; margin: 0; accent-color: #ffb703;"> 🐾 Raciones y accesorios para mascotas
+        </label>
       </div>
-    </div>
 
-    <!-- Milanesas al Plato & Promos -->
-    <div class="card" id="catPlato">
-      <h3 class="accordion-header" onclick="toggleAcordeon('catPlato')">Milanesas al Plato & Promos</h3>
-      <div class="accordion-content">
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne al plato con fritas</h4>
-            <span class="price">$270</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne al plato con fritas', 270)">Agregar</button>
-        </div>
+      <!-- Caza de Dueños o Negocios -->
+      <label style="font-size: 13px; color: #ccc; margin-top: 5px;">¿Tenés algún negocio o conocés a alguien que le interese estar?</label>
+      <input type="text" id="valNegocio" placeholder="Ej: Sí, tengo un local / Conozco a..." style="margin-bottom: 15px; padding: 10px;">
 
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo al plato con fritas</h4>
-            <span class="price">$240</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo al plato con fritas', 240)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Carne completa con fritas (Al plato)</h4>
-            <span class="price">$300</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne completa con fritas (Al plato)', 300)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Mila Pollo completa con fritas (Al plato)</h4>
-            <span class="price">$280</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo completa con fritas (Al plato)', 280)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Carne Cheddar y Bacon + Huevo frito y fritas</h4>
-            <span class="price">$470</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Carne Cheddar y Bacon + Huevo frito y fritas', 470)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Pollo Cheddar y Bacon + Huevo frito y fritas</h4>
-            <span class="price">$450</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Pollo Cheddar y Bacon + Huevo frito y fritas', 450)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Napolitana Carne con fritas</h4>
-            <span class="price">$470</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Napolitana Carne con fritas', 470)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Napolitana Pollo con fritas</h4>
-            <span class="price">$430</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Napolitana Pollo con fritas', 430)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Napo P2 Carne</h4>
-            <span class="price">$570</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Napo P2 Carne', 570)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Napo P2 Pollo</h4>
-            <span class="price">$550</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Napo P2 Pollo', 550)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Promo: 2 Milas completas con fritas</h4>
-            <span class="price">$500</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Milas completas con fritas', 500)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Promo: 2 Milas a caballo con fritas</h4>
-            <span class="price">$520</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Milas a caballo con fritas', 520)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Promo: 3 Milas a caballo con fritas</h4>
-            <span class="price">$640</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Promo: 3 Milas a caballo con fritas', 640)">Agregar</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hamburguesas Caseras & Promos -->
-    <div class="card" id="catBurgers">
-      <h3 class="accordion-header" onclick="toggleAcordeon('catBurgers')">Hamburguesas Caseras & Promos</h3>
-      <div class="accordion-content">
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Hamburguesa común c/ fritas</h4>
-            <p>Lechuga, tomate, aderezos, huevo duro</p>
-            <span class="price">$140</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa común c/ fritas', 140)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Hamburguesa c/ huevo frito y fritas</h4>
-            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-            <span class="price">$180</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa c/ huevo frito y fritas', 180)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Hamburguesa Completa</h4>
-            <p>Lechuga, tomate, aderezos, huevo frito, jamón, muzza, bacon, fritas</p>
-            <span class="price">$250</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa Completa', 250)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Hamburguesa Cheddar y Bacon</h4>
-            <p>Aderezos, lechuga, tomate, cheddar, bacon, huevo frito, fritas</p>
-            <span class="price">$250</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa Cheddar y Bacon', 250)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Promo: Caja 4 hamburguesas Completas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito y muchas fritas</p>
-            <span class="price">$800</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 hamburguesas Completas', 800)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Promo: Caja 4 hamburguesas comunes</h4>
-            <p>Aderezos, lechuga, tomate, huevo duro, muchas fritas</p>
-            <span class="price">$580</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 hamburguesas comunes', 580)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Promo: Caja 4 Hamburguesas cheddar y bacon</h4>
-            <p>Aderezos, lechuga, tomate, cheddar, bacon, huevo frito y muchas fritas</p>
-            <span class="price">$800</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 Hamburguesas cheddar y bacon', 800)">Agregar</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Chivitos -->
-    <div class="card" id="catChivitos">
-      <h3 class="accordion-header" onclick="toggleAcordeon('catChivitos')">Chivitos</h3>
-      <div class="accordion-content">
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Chivito en 1 pan Completo</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-            <span class="price">$350</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Chivito en 1 pan Completo', 350)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Chivito en 2 Panes Completo</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas</p>
-            <span class="price">$650</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Chivito en 2 Panes Completo', 650)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Chivito en 3 Panes Completa con fritas</h4>
-            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas</p>
-            <span class="price">$900</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Chivito en 3 Panes Completa con fritas', 900)">Agregar</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Panchos & Promos -->
-    <div class="card" id="catPanchos">
-      <h3 class="accordion-header" onclick="toggleAcordeon('catPanchos')">Panchos & Promos</h3>
-      <div class="accordion-content">
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Pancho Común</h4>
-            <p>Aderezos, papitas</p>
-            <span class="price">$65</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Pancho Común', 65)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Pancho Napolitano</h4>
-            <p>Salsa pizzera casera, muzza, orégano</p>
-            <span class="price">$90</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Pancho Napolitano', 90)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Pancho Cheddar Bacon</h4>
-            <span class="price">$90</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Pancho Cheddar Bacon', 90)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Pancho Completo</h4>
-            <p>Jamón, muzza, bacon, huevo duro (aceitunas a elección)</p>
-            <span class="price">$100</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Pancho Completo', 100)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos Comunes + Fritas</h4>
-            <span class="price">$600</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos Comunes + Fritas', 600)">Agregar</button>
-        </div>
-
-        <div class="product-item">
-          <div class="product-info">
-            <h4>Promo: La Caja Loca</h4>
-            <p>6 panchos a elección + fritas + cheddar y bacon</p>
-            <span class="price">$800</span>
-          </div>
-          <button class="btn-add" onclick="agregarAlCarrito('Promo: La Caja Loca', 800)">Agregar</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. Resumen, Datos de Envío y Pago -->
-    <div class="card" id="seccionPedido">
-      <h3>Tu Pedido, Envío y Pago</h3>
+      <button class="btn-pay" id="btnEnviarValidacion" onclick="completarValidacionYAbrirMenu()" style="background: #ffb703; color: #000; font-weight: 900; box-shadow: 0 0 12px rgba(255, 183, 3, 0.5); padding: 14px;">
+        🚀 ¡Listo, ver el menú de La Bombonera!
+      </button>
       
-      <div class="cart-box">
-        <strong>Seleccionados:</strong>
-        <div class="cart-list" id="cartList">
-          <span style="color: #777;">Aún no agregaste productos...</span>
-        </div>
-        <div style="margin-top: 8px; font-weight: bold; border-top: 1px solid #333; padding-top: 5px;">
-          Total: $<span id="totalPrecio">0</span>
+      <p id="valFeedback" style="font-size: 12px; text-align: center; color: #25d366; margin-top: 8px; font-weight: bold;"></p>
+    </div>
+
+    <!-- MENÚ DE COMIDA (Oculto hasta que completan la encuesta) -->
+    <div id="menuComidaPrincipal" style="display: none;">
+
+      <!-- 1. Tipo de cliente -->
+      <div class="card active-accordion" id="cardCliente">
+        <h3 class="accordion-header" onclick="toggleAcordeon('cardCliente')">1. ¿Cómo nos visitás hoy?</h3>
+        <div class="accordion-content" style="max-height: none; padding-top: 12px; border-top: 1px solid #333; margin-top: 10px;">
+          <div class="client-type-group">
+            <button class="btn-type active" onclick="seleccionarTipoCliente('Cliente Nuevo', this)">🆕 Soy cliente nuevo</button>
+            <button class="btn-type" onclick="seleccionarTipoCliente('Cliente Frecuente', this)">🔁 Soy cliente frecuente</button>
+          </div>
         </div>
       </div>
 
-      <label>Tu Nombre:</label>
-      <input type="text" id="nombreCliente" placeholder="Ej: Juan Pérez">
+      <!-- 2. Menú de Productos -->
+      
+      <!-- Milanesas de Carne -->
+      <div class="card" id="catCarne">
+        <h3 class="accordion-header" onclick="toggleAcordeon('catCarne')">Milanesas de Carne</h3>
+        <div class="accordion-content">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne en 1 pan común</h4>
+              <p>Lechuga, tomate, aderezos, huevo duro</p>
+              <span class="price">$200</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan común', 200)">Agregar</button>
+          </div>
 
-      <label>Celular de Contacto:</label>
-      <input type="tel" id="celularCliente" placeholder="Ej: 099 123 456">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne en 1 pan con fritas</h4>
+              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+              <span class="price">$240</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan con fritas', 240)">Agregar</button>
+          </div>
 
-      <label>Dirección de Entrega:</label>
-      <input type="text" id="direccionCliente" placeholder="Ej: Calle 18 de Julio 567">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne en 2 panes común</h4>
+              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+              <span class="price">$470</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 2 panes común', 470)">Agregar</button>
+          </div>
 
-      <label>Método de Pago:</label>
-      <select id="metodoPago" onchange="verificarEfectivo()">
-        <option value="Efectivo">Efectivo</option>
-        <option value="Débito / Tarjeta">Débito / Tarjeta</option>
-        <option value="Transferencia">Transferencia Bancaria</option>
-      </select>
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne en 1 pan completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$320</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan completa con fritas', 320)">Agregar</button>
+          </div>
 
-      <div id="cambioBox">
-        <label>¿Necesitas cambio? (¿Con cuánto abonas?):</label>
-        <input type="text" id="cambioCliente" placeholder="Ej: Cambio de $1000">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne en 2 panes completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$520</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 2 panes completa con fritas', 520)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne en 3 panes completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$640</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 3 panes completa con fritas', 640)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne en 4 panes completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$850</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 4 panes completa con fritas', 850)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Caja 4 milanesas (Carne)</h4>
+              <p>1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada</p>
+              <span class="price">$990</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Caja 4 milanesas (Carne)', 990)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Baño de Cheddar y Bacon a las papas</h4>
+              <p>Extra para acompañar tus papas</p>
+              <span class="price">$140</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Baño de Cheddar y Bacon a las papas', 140)">Agregar</button>
+          </div>
+        </div>
       </div>
 
-      <button class="btn-pay" id="btnEnviar" onclick="procesarPedido()">Pedir por WhatsApp 🚀</button>
+      <!-- Milanesas de Pollo -->
+      <div class="card" id="catPollo">
+        <h3 class="accordion-header" onclick="toggleAcordeon('catPollo')">Milanesas de Pollo</h3>
+        <div class="accordion-content">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo en 1 pan común</h4>
+              <p>Aderezos, lechuga, tomate, huevo duro</p>
+              <span class="price">$180</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan común', 180)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo en 1 pan con fritas</h4>
+              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+              <span class="price">$210</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan con fritas', 210)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo en 2 panes común</h4>
+              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+              <span class="price">$410</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 2 panes común', 410)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo en 1 pan completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$300</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan completa con fritas', 300)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo en 2 panes completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$470</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 2 panes completa con fritas', 470)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo en 3 panes completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$600</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 3 panes completa con fritas', 600)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo en 4 panes completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$820</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 4 panes completa con fritas', 820)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Caja 4 milanesas (Pollo)</h4>
+              <p>1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada</p>
+              <span class="price">$900</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Caja 4 milanesas (Pollo)', 900)">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milanesas al Plato & Promos -->
+      <div class="card" id="catPlato">
+        <h3 class="accordion-header" onclick="toggleAcordeon('catPlato')">Milanesas al Plato & Promos</h3>
+        <div class="accordion-content">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne al plato con fritas</h4>
+              <span class="price">$270</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne al plato con fritas', 270)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo al plato con fritas</h4>
+              <span class="price">$240</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo al plato con fritas', 240)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Carne completa con fritas (Al plato)</h4>
+              <span class="price">$300</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne completa con fritas (Al plato)', 300)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Mila Pollo completa con fritas (Al plato)</h4>
+              <span class="price">$280</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo completa con fritas (Al plato)', 280)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Carne Cheddar y Bacon + Huevo frito y fritas</h4>
+              <span class="price">$470</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Carne Cheddar y Bacon + Huevo frito y fritas', 470)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Pollo Cheddar y Bacon + Huevo frito y fritas</h4>
+              <span class="price">$450</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Pollo Cheddar y Bacon + Huevo frito y fritas', 450)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Napolitana Carne con fritas</h4>
+              <span class="price">$470</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Napolitana Carne con fritas', 470)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Napolitana Pollo con fritas</h4>
+              <span class="price">$430</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Napolitana Pollo con fritas', 430)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Napo P2 Carne</h4>
+              <span class="price">$570</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Napo P2 Carne', 570)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Napo P2 Pollo</h4>
+              <span class="price">$550</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Napo P2 Pollo', 550)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Promo: 2 Milas completas con fritas</h4>
+              <span class="price">$500</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Milas completas con fritas', 500)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Promo: 2 Milas a caballo con fritas</h4>
+              <span class="price">$520</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Milas a caballo con fritas', 520)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Promo: 3 Milas a caballo con fritas</h4>
+              <span class="price">$640</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Promo: 3 Milas a caballo con fritas', 640)">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hamburguesas Caseras & Promos -->
+      <div class="card" id="catBurgers">
+        <h3 class="accordion-header" onclick="toggleAcordeon('catBurgers')">Hamburguesas Caseras & Promos</h3>
+        <div class="accordion-content">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Hamburguesa común c/ fritas</h4>
+              <p>Lechuga, tomate, aderezos, huevo duro</p>
+              <span class="price">$140</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa común c/ fritas', 140)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Hamburguesa c/ huevo frito y fritas</h4>
+              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+              <span class="price">$180</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa c/ huevo frito y fritas', 180)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Hamburguesa Completa</h4>
+              <p>Lechuga, tomate, aderezos, huevo frito, jamón, muzza, bacon, fritas</p>
+              <span class="price">$250</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa Completa', 250)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Hamburguesa Cheddar y Bacon</h4>
+              <p>Aderezos, lechuga, tomate, cheddar, bacon, huevo frito, fritas</p>
+              <span class="price">$250</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa Cheddar y Bacon', 250)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Promo: Caja 4 hamburguesas Completas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito y muchas fritas</p>
+              <span class="price">$800</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 hamburguesas Completas', 800)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Promo: Caja 4 hamburguesas comunes</h4>
+              <p>Aderezos, lechuga, tomate, huevo duro, muchas fritas</p>
+              <span class="price">$580</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 hamburguesas comunes', 580)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Promo: Caja 4 Hamburguesas cheddar y bacon</h4>
+              <p>Aderezos, lechuga, tomate, cheddar, bacon, huevo frito y muchas fritas</p>
+              <span class="price">$800</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 Hamburguesas cheddar y bacon', 800)">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chivitos -->
+      <div class="card" id="catChivitos">
+        <h3 class="accordion-header" onclick="toggleAcordeon('catChivitos')">Chivitos</h3>
+        <div class="accordion-content">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Chivito en 1 pan Completo</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+              <span class="price">$350</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Chivito en 1 pan Completo', 350)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Chivito en 2 Panes Completo</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas</p>
+              <span class="price">$650</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Chivito en 2 Panes Completo', 650)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Chivito en 3 Panes Completa con fritas</h4>
+              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas</p>
+              <span class="price">$900</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Chivito en 3 Panes Completa con fritas', 900)">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panchos & Promos -->
+      <div class="card" id="catPanchos">
+        <h3 class="accordion-header" onclick="toggleAcordeon('catPanchos')">Panchos & Promos</h3>
+        <div class="accordion-content">
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Pancho Común</h4>
+              <p>Aderezos, papitas</p>
+              <span class="price">$65</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Pancho Común', 65)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Pancho Napolitano</h4>
+              <p>Salsa pizzera casera, muzza, orégano</p>
+              <span class="price">$90</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Pancho Napolitano', 90)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Pancho Cheddar Bacon</h4>
+              <span class="price">$90</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Pancho Cheddar Bacon', 90)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Pancho Completo</h4>
+              <p>Jamón, muzza, bacon, huevo duro (aceitunas a elección)</p>
+              <span class="price">$100</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Pancho Completo', 100)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos Comunes + Fritas</h4>
+              <span class="price">$600</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos Comunes + Fritas', 600)">Agregar</button>
+          </div>
+
+          <div class="product-item">
+            <div class="product-info">
+              <h4>Promo: La Caja Loca</h4>
+              <p>6 panchos a elección + fritas + cheddar y bacon</p>
+              <span class="price">$800</span>
+            </div>
+            <button class="btn-add" onclick="agregarAlCarrito('Promo: La Caja Loca', 800)">Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Resumen, Datos de Envío y Pago -->
+      <div class="card" id="seccionPedido">
+        <h3>Tu Pedido, Envío y Pago</h3>
+        
+        <div class="cart-box">
+          <strong>Seleccionados:</strong>
+          <div class="cart-list" id="cartList">
+            <span style="color: #777;">Aún no agregaste productos...</span>
+          </div>
+          <div style="margin-top: 8px; font-weight: bold; border-top: 1px solid #333; padding-top: 5px;">
+            Total: $<span id="totalPrecio">0</span>
+          </div>
+        </div>
+
+        <label>Tu Nombre:</label>
+        <input type="text" id="nombreCliente" placeholder="Ej: Juan Pérez">
+
+        <label>Celular de Contacto:</label>
+        <input type="tel" id="celularCliente" placeholder="Ej: 099 123 456">
+
+        <label>Dirección de Entrega:</label>
+        <input type="text" id="direccionCliente" placeholder="Ej: Calle 18 de Julio 567">
+
+        <label>Método de Pago:</label>
+        <select id="metodoPago" onchange="verificarEfectivo()">
+          <option value="Efectivo">Efectivo</option>
+          <option value="Débito / Tarjeta">Débito / Tarjeta</option>
+          <option value="Transferencia">Transferencia Bancaria</option>
+        </select>
+
+        <div id="cambioBox">
+          <label>¿Necesitas cambio? (¿Con cuánto abonas?):</label>
+          <input type="text" id="cambioCliente" placeholder="Ej: Cambio de $1000">
+        </div>
+
+        <button class="btn-pay" id="btnEnviar" onclick="procesarPedido()">Pedir por WhatsApp 🚀</button>
+      </div>
+
     </div>
   </div>
 
@@ -830,7 +882,60 @@
     let carrito = [];
     
     const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtthYzSNDPpV9zlCqJ9eUszjQN_bISSQlEoOmViaxHO2ygo2_uGIpY0tf7X0CB7P1D/exec";
+    const GOOGLE_SHEETS_URL_ENCUESTA = "https://script.google.com/macros/s/AKfycbxjDqel4zzE-oDkogL5oZwEcEGRN_HBkTMMnbKw7uBfhn534tzAK1swF99eUjcWLzMHNA/exec";
     const TELEFONO_WHATSAPP = "59898780297";
+
+    // Función para procesar la encuesta inicial de QR y abrir el menú
+    async function completarValidacionYAbrirMenu() {
+      const nombre = document.getElementById('valNombre').value.trim();
+      const telefono = document.getElementById('valTelefono').value.trim();
+      const negocio = document.getElementById('valNegocio').value.trim() || "Ninguno / No especifica";
+      const feedback = document.getElementById('valFeedback');
+      const btn = document.getElementById('btnEnviarValidacion');
+
+      if (!nombre || !telefono) {
+        alert("Por favor completá tu nombre y celular para continuar al menú.");
+        return;
+      }
+
+      const checkboxes = document.querySelectorAll('input[name="valRubro"]:checked');
+      let rubros = [];
+      checkboxes.forEach((cb) => { rubros.push(cb.value); });
+
+      if (rubros.length === 0) {
+        alert("Por favor seleccioná al menos una opción que te interese.");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Guardando y abriendo menú...";
+
+      const datosValidacion = {
+        nombre: nombre,
+        telefono: telefono,
+        intereses: rubros.join(", "),
+        negocioContacto: negocio
+      };
+
+      try {
+        await fetch(GOOGLE_SHEETS_URL_ENCUESTA, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datosValidacion)
+        });
+      } catch (err) {
+        console.error("Error al registrar validación:", err);
+      }
+
+      feedback.textContent = "✅ ¡Gracias! Abriendo La Bombonera...";
+      
+      setTimeout(() => {
+        document.getElementById('seccionValidacionQR').style.display = 'none';
+        document.getElementById('menuComidaPrincipal').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 600);
+    }
 
     function toggleAcordeon(cardId) {
       const card = document.getElementById(cardId);
