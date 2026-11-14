@@ -4,6 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Bombonera Comidas | Pedidos</title>
+  
+  <!-- OneSignal Web SDK Integration -->
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+  <script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.init({
+        appId: "4f050a40-af5e-4fa5-8af2-152c582499e5",
+        safari_web_id: "web.onesignal.auto.XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        notifyButton: {
+          enable: true,
+        },
+      });
+    });
+  </script>
+
   <style>
     body {
       background-color: #000;
@@ -952,7 +968,7 @@
     const TELEFONO_WHATSAPP = "59898780297";
 
     const PIN_ADMIN = "2026"; 
-    const ONESIGNAL_APP_ID = "TU_APP_ID_DE_ONESIGNAL";
+    const ONESIGNAL_APP_ID = "4f050a40-af5e-4fa5-8af2-152c582499e5";
     const ONESIGNAL_REST_API_KEY = "TU_REST_API_KEY_DE_ONESIGNAL";
 
     // LÓGICA DE 5 TOQUES SECRETOS EN EL TÍTULO
