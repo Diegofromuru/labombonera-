@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Bombonera Comidas | Pedidos</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fondo con rayos láser animados y brillo neón */
+    .laser-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
+      overflow: hidden;
+    }
+
+    .laser {
+      position: absolute;
+      width: 200%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ffb703, #ffe853, transparent);
+      animation: shootLaser 4s linear infinite;
+      box-shadow: 0 0 10px #ffb703, 0 0 20px #ffb703;
+    }
+
+    .laser:nth-child(1) { top: 15%; animation-delay: 0s; transform: rotate(25deg); }
+    .laser:nth-child(2) { top: 45%; animation-delay: 1.5s; transform: rotate(-15deg); }
+    .laser:nth-child(3) { top: 75%; animation-delay: 0.8s; transform: rotate(10deg); }
+
+    @keyframes shootLaser {
+      0% { transform: translateX(-100%) rotate(25deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(100%) rotate(25deg); opacity: 0; }
+    }
+
+    /* Marquesina superior rápida */
+    .marquee-container {
+      background-color: #ffb703;
+      color: #000;
+      font-weight: 900;
+      font-size: 14px;
+      padding: 8px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 183, 3, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .marquee-text {
+      display: inline-block;
+      animation: marquee 8s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* CONTENEDOR DEL TÍTULO CENTRADO PERFECTAMENTE */
+    .titulo-container {
+      text-align: center;
+      margin-bottom: 25px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* TÍTULO REFLECTANTE Y TITILANTE SIN RAYITOS */
+    .titulo-reflectante {
+      display: inline-block;
+      font-size: 26px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0;
+      
+      background: linear-gradient(
+        110deg,
+        #b87d00 10%,
+        #ffb703 30%,
+        #ffffff 48%,
+        #fff7cc 52%,
+        #ffb703 70%,
+        #b87d00 90%
+      );
+      background-size: 250% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      
+      animation: reflejoLuz 1.8s linear infinite, titileoNeon 1.2s infinite alternate;
+    }
+
+    @keyframes reflejoLuz {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+
+    @keyframes titileoNeon {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        filter: drop-shadow(0 0 8px rgba(255, 183, 3, 0.9)) drop-shadow(0 0 18px rgba(255, 232, 83, 0.6));
+        opacity: 1;
+      }
+      20%, 24%, 55% {
+        filter: drop-shadow(0 0 2px rgba(255, 183, 3, 0.2));
+        opacity: 0.78;
+      }
+    }
+
+    .card {
+      background: rgba(20, 20, 20, 0.95);
+      border: 2px solid #ffb703;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px rgba(255, 183, 3, 0.2);
+    }
+
+    .accordion-header {
+      color: #ffb703;
+      margin: 0;
+      font-size: 16px;
+      padding-bottom: 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .accordion-header::after {
+      content: '▼';
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .card.active-accordion .accordion-header::after {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      padding-top: 0;
+    }
+
+    .card.active-accordion .accordion-content {
+      max-height: 2500px;
+      padding-top: 12px;
+      border-top: 1px solid #333;
+      margin-top: 10px;
+    }
+
+    .client-type-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-type {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #444;
+      background: #111;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.3s ease;
+      font-size: 12px;
+    }
+
+    .btn-type.active {
+      background: #ffb703;
+      color: #000;
+      border-color: #ffb703;
+      box-shadow: 0 0 10px #ffb703;
+    }
+
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      border: 1px solid #333;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .product-info h4 {
+      margin: 0 0 5px 0;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .product-info p {
+      margin: 0;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .product-info .price {
+      color: #ffb703;
+      font-weight: bold;
+      margin-top: 5px;
+      display: inline-block;
+    }
+
+    .btn-add {
+      background: #ffb703;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(255, 183, 3, 0.4);
+      transition: transform 0.1s ease;
+    }
+
+    .btn-add:active {
+      transform: scale(0.95);
+    }
+
+    #seccionPedido {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease, opacity 0.5s ease, padding 0.5s ease;
+      padding: 0 15px;
+      border: none;
+    }
+
+    #seccionPedido.visible {
+      max-height: 800px;
+      opacity: 1;
+      padding: 15px;
+      border: 2px solid #ffb703;
+    }
+
+    .cart-box {
+      background: #111;
+      border: 1px dashed #ffb703;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .cart-list {
+      max-height: 120px;
+      overflow-y: auto;
+      margin: 8px 0;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    select, input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #111;
+      color: #fff;
+      box-sizing: border-box;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    select:focus, input:focus, textarea:focus {
+      border-color: #ffb703;
+      outline: none;
+      box-shadow: 0 0 8px rgba(255, 183, 3, 0.5);
+    }
+
+    .btn-pay {
+      background: #25d366;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+    }
+
+    /* MODAL ADMIN NOTIFICACIONES PUSH */
+    #modalAdminPush {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      padding: 20px;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .admin-box {
+      width: 100%;
+      max-width: 420px;
+      background: #141414;
+      border: 2px solid #ffb703;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 0 25px rgba(255, 183, 3, 0.4);
+      position: relative;
+    }
+
+    .btn-push-send {
+      width: 100%;
+      padding: 14px;
+      background: #ffb703;
+      color: #000;
+      font-weight: 900;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      text-transform: uppercase;
+      box-shadow: 0 0 12px rgba(255, 183, 3, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo de rayos láser -->
+  <div class="laser-bg">
+    <div class="laser"></div>
+    <div class="laser"></div>
+    <div class="laser"></div>
+  </div>
+
+  <!-- Marquesina superior rápida -->
+  <div class="marquee-container">
+    <div class="marquee-text">⚡ LA BOMBONERA COMIDAS • PEDÍ TUS HAMBURGUESAS Y LOMOS SIN ESPERAS • ¡EL SABOR MÁS RÁPIDO! ⚡</div>
+  </div>
+
+  <div class="container">
+    <!-- TÍTULO CENTRADO CON DISPARADOR SECRETO DE 5 TOQUES -->
+    <div class="titulo-container" onclick="registrarToqueAdmin()">
+      <h1 class="titulo-reflectante">La Bombonera Comidas</h1>
+    </div>
+
+    <!-- 1. Tipo de cliente -->
+    <div class="card active-accordion" id="cardCliente">
+      <h3 class="accordion-header" onclick="toggleAcordeon('cardCliente')">1. ¿Cómo nos visitás hoy?</h3>
+      <div class="accordion-content" style="max-height: none; padding-top: 12px; border-top: 1px solid #333; margin-top: 10px;">
+        <div class="client-type-group">
+          <button class="btn-type active" onclick="seleccionarTipoCliente('Cliente Nuevo', this)">🆕 Soy cliente nuevo</button>
+          <button class="btn-type" onclick="seleccionarTipoCliente('Cliente Frecuente', this)">🔁 Soy cliente frecuente</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Menú de Productos -->
+    
+    <!-- Milanesas de Carne -->
+    <div class="card" id="catCarne">
+      <h3 class="accordion-header" onclick="toggleAcordeon('catCarne')">Milanesas de Carne</h3>
+      <div class="accordion-content">
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne en 1 pan común</h4>
+            <p>Lechuga, tomate, aderezos, huevo duro</p>
+            <span class="price">$200</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan común', 200)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne en 1 pan con fritas</h4>
+            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+            <span class="price">$240</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan con fritas', 240)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne en 2 panes común</h4>
+            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+            <span class="price">$470</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 2 panes común', 470)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne en 1 pan completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$320</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan completa con fritas', 320)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne en 2 panes completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$520</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 2 panes completa con fritas', 520)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne en 3 panes completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$640</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 3 panes completa con fritas', 640)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne en 4 panes completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$850</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 4 panes completa con fritas', 850)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Caja 4 milanesas (Carne)</h4>
+            <p>1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada</p>
+            <span class="price">$990</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Caja 4 milanesas (Carne)', 990)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Baño de Cheddar y Bacon a las papas</h4>
+            <p>Extra para acompañar tus papas</p>
+            <span class="price">$140</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Baño de Cheddar y Bacon a las papas', 140)">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milanesas de Pollo -->
+    <div class="card" id="catPollo">
+      <h3 class="accordion-header" onclick="toggleAcordeon('catPollo')">Milanesas de Pollo</h3>
+      <div class="accordion-content">
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo en 1 pan común</h4>
+            <p>Aderezos, lechuga, tomate, huevo duro</p>
+            <span class="price">$180</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan común', 180)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo en 1 pan con fritas</h4>
+            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+            <span class="price">$210</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan con fritas', 210)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo en 2 panes común</h4>
+            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+            <span class="price">$410</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 2 panes común', 410)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo en 1 pan completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$300</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan completa con fritas', 300)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo en 2 panes completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$470</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 2 panes completa con fritas', 470)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo en 3 panes completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$600</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 3 panes completa con fritas', 600)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo en 4 panes completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$820</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 4 panes completa con fritas', 820)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Caja 4 milanesas (Pollo)</h4>
+            <p>1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada</p>
+            <span class="price">$900</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Caja 4 milanesas (Pollo)', 900)">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Milanesas al Plato & Promos -->
+    <div class="card" id="catPlato">
+      <h3 class="accordion-header" onclick="toggleAcordeon('catPlato')">Milanesas al Plato & Promos</h3>
+      <div class="accordion-content">
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne al plato con fritas</h4>
+            <span class="price">$270</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne al plato con fritas', 270)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo al plato con fritas</h4>
+            <span class="price">$240</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo al plato con fritas', 240)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Carne completa con fritas (Al plato)</h4>
+            <span class="price">$300</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Carne completa con fritas (Al plato)', 300)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Mila Pollo completa con fritas (Al plato)</h4>
+            <span class="price">$280</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo completa con fritas (Al plato)', 280)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Carne Cheddar y Bacon + Huevo frito y fritas</h4>
+            <span class="price">$470</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Carne Cheddar y Bacon + Huevo frito y fritas', 470)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Pollo Cheddar y Bacon + Huevo frito y fritas</h4>
+            <span class="price">$450</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Pollo Cheddar y Bacon + Huevo frito y fritas', 450)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Napolitana Carne con fritas</h4>
+            <span class="price">$470</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Napolitana Carne con fritas', 470)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Napolitana Pollo con fritas</h4>
+            <span class="price">$430</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Napolitana Pollo con fritas', 430)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Napo P2 Carne</h4>
+            <span class="price">$570</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Napo P2 Carne', 570)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Napo P2 Pollo</h4>
+            <span class="price">$550</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Napo P2 Pollo', 550)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Promo: 2 Milas completas con fritas</h4>
+            <span class="price">$500</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Milas completas con fritas', 500)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Promo: 2 Milas a caballo con fritas</h4>
+            <span class="price">$520</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Milas a caballo con fritas', 520)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Promo: 3 Milas a caballo con fritas</h4>
+            <span class="price">$640</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Promo: 3 Milas a caballo con fritas', 640)">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hamburguesas Caseras & Promos -->
+    <div class="card" id="catBurgers">
+      <h3 class="accordion-header" onclick="toggleAcordeon('catBurgers')">Hamburguesas Caseras & Promos</h3>
+      <div class="accordion-content">
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Hamburguesa común c/ fritas</h4>
+            <p>Lechuga, tomate, aderezos, huevo duro</p>
+            <span class="price">$140</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa común c/ fritas', 140)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Hamburguesa c/ huevo frito y fritas</h4>
+            <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
+            <span class="price">$180</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa c/ huevo frito y fritas', 180)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Hamburguesa Completa</h4>
+            <p>Lechuga, tomate, aderezos, huevo frito, jamón, muzza, bacon, fritas</p>
+            <span class="price">$250</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa Completa', 250)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Hamburguesa Cheddar y Bacon</h4>
+            <p>Aderezos, lechuga, tomate, cheddar, bacon, huevo frito, fritas</p>
+            <span class="price">$250</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa Cheddar y Bacon', 250)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Promo: Caja 4 hamburguesas Completas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito y muchas fritas</p>
+            <span class="price">$800</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 hamburguesas Completas', 800)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Promo: Caja 4 hamburguesas comunes</h4>
+            <p>Aderezos, lechuga, tomate, huevo duro, muchas fritas</p>
+            <span class="price">$580</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 hamburguesas comunes', 580)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Promo: Caja 4 Hamburguesas cheddar y bacon</h4>
+            <p>Aderezos, lechuga, tomate, cheddar, bacon, huevo frito y muchas fritas</p>
+            <span class="price">$800</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 Hamburguesas cheddar y bacon', 800)">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chivitos -->
+    <div class="card" id="catChivitos">
+      <h3 class="accordion-header" onclick="toggleAcordeon('catChivitos')">Chivitos</h3>
+      <div class="accordion-content">
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Chivito en 1 pan Completo</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
+            <span class="price">$350</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Chivito en 1 pan Completo', 350)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Chivito en 2 Panes Completo</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas</p>
+            <span class="price">$650</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Chivito en 2 Panes Completo', 650)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Chivito en 3 Panes Completa con fritas</h4>
+            <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas</p>
+            <span class="price">$900</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Chivito en 3 Panes Completa con fritas', 900)">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panchos & Promos -->
+    <div class="card" id="catPanchos">
+      <h3 class="accordion-header" onclick="toggleAcordeon('catPanchos')">Panchos & Promos</h3>
+      <div class="accordion-content">
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Pancho Común</h4>
+            <p>Aderezos, papitas</p>
+            <span class="price">$65</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Pancho Común', 65)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Pancho Napolitano</h4>
+            <p>Salsa pizzera casera, muzza, orégano</p>
+            <span class="price">$90</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Pancho Napolitano', 90)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Pancho Cheddar Bacon</h4>
+            <span class="price">$90</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Pancho Cheddar Bacon', 90)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Pancho Completo</h4>
+            <p>Jamón, muzza, bacon, huevo duro (aceitunas a elección)</p>
+            <span class="price">$100</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Pancho Completo', 100)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos Comunes + Fritas</h4>
+            <span class="price">$600</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos Comunes + Fritas', 600)">Agregar</button>
+        </div>
+
+        <div class="product-item">
+          <div class="product-info">
+            <h4>Promo: La Caja Loca</h4>
+            <p>6 panchos a elección + fritas + cheddar y bacon</p>
+            <span class="price">$800</span>
+          </div>
+          <button class="btn-add" onclick="agregarAlCarrito('Promo: La Caja Loca', 800)">Agregar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Resumen, Datos de Envío y Pago -->
+    <div class="card" id="seccionPedido">
+      <h3>Tu Pedido, Envío y Pago</h3>
+      
+      <div class="cart-box">
+        <strong>Seleccionados:</strong>
+        <div class="cart-list" id="cartList">
+          <span style="color: #777;">Aún no agregaste productos...</span>
+        </div>
+        <div style="margin-top: 8px; font-weight: bold; border-top: 1px solid #333; padding-top: 5px;">
+          Total: $<span id="totalPrecio">0</span>
+        </div>
+      </div>
+
+      <label>Tu Nombre:</label>
+      <input type="text" id="nombreCliente" placeholder="Ej: Juan Pérez">
+
+      <label>Celular de Contacto:</label>
+      <input type="tel" id="celularCliente" placeholder="Ej: 099 123 456">
+
+      <label>Dirección de Entrega:</label>
+      <input type="text" id="direccionCliente" placeholder="Ej: Calle 18 de Julio 567">
+
+      <label>Método de Pago:</label>
+      <select id="metodoPago" onchange="verificarEfectivo()">
+        <option value="Efectivo">Efectivo</option>
+        <option value="Débito / Tarjeta">Débito / Tarjeta</option>
+        <option value="Transferencia">Transferencia Bancaria</option>
+      </select>
+
+      <div id="cambioBox">
+        <label>¿Necesitas cambio? (¿Con cuánto abonas?):</label>
+        <input type="text" id="cambioCliente" placeholder="Ej: Cambio de $1000">
+      </div>
+
+      <button class="btn-pay" id="btnEnviar" onclick="procesarPedido()">Pedir por WhatsApp 🚀</button>
+    </div>
+  </div>
+
+  <!-- MODAL PANEL DE ADMINISTRACIÓN PUSH -->
+  <div id="modalAdminPush">
+    <div class="admin-box">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px solid #333; padding-bottom:10px;">
+        <h3 style="margin:0; color:#ffb703; font-size:18px;">📢 Panel Dueños - Push</h3>
+        <button onclick="cerrarPanelAdmin()" style="background:none; border:none; color:#ff4d4d; font-size:22px; font-weight:bold; cursor:pointer;">✕</button>
+      </div>
+
+      <label>Título de la notificación:</label>
+      <input type="text" id="pushTitulo" placeholder="Ej: 🔥 ¡Promo hoy en La Bombonera!">
+
+      <label>Mensaje para los clientes:</label>
+      <textarea id="pushMensaje" rows="3" placeholder="Ej: Pedí tu Caja 4 Milanesas y te llevamos las papas con cheddar de regalo."></textarea>
+
+      <label>Enlace opcional al tocar:</label>
+      <input type="url" id="pushUrl" placeholder="https://...">
+
+      <button class="btn-push-send" id="btnDispararPush" onclick="enviarPushClientes()">
+        🚀 Enviar Notificación a Todos
+      </button>
+
+      <p id="feedbackPush" style="font-size:13px; text-align:center; margin-top:12px; color:#ffb703; min-height:18px;"></p>
+    </div>
+  </div>
+
+  <script>
+    let tipoClienteSeleccionado = 'Cliente Nuevo';
+    let carrito = [];
+    
+    const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzf83ttOTabhJo4otPD8270Ek1Nc50Bppw2-YUJvVqiRY0bBrGBdoPCoqTdm8enxHc/exec";
+    const TELEFONO_WHATSAPP = "59898780297";
+
+    const PIN_ADMIN = "2026"; 
+    const ONESIGNAL_APP_ID = "TU_APP_ID_DE_ONESIGNAL";
+    const ONESIGNAL_REST_API_KEY = "TU_REST_API_KEY_DE_ONESIGNAL";
+
+    // LÓGICA DE 5 TOQUES SECRETOS EN EL TÍTULO
+    let contadorToques = 0;
+    let temporizadorToques = null;
+
+    function registrarToqueAdmin() {
+      contadorToques++;
+      clearTimeout(temporizadorToques);
+
+      if (contadorToques >= 5) {
+        contadorToques = 0;
+        const pinIngresado = prompt("🔐 Acceso exclusivo dueños.\nIngresá el PIN de administración:");
+        if (pinIngresado === PIN_ADMIN) {
+          document.getElementById("modalAdminPush").style.display = "flex";
+        } else if (pinIngresado !== null) {
+          alert("❌ PIN incorrecto.");
+        }
+      } else {
+        temporizadorToques = setTimeout(() => {
+          contadorToques = 0;
+        }, 1500);
+      }
+    }
+
+    function cerrarPanelAdmin() {
+      document.getElementById("modalAdminPush").style.display = "none";
+      document.getElementById("feedbackPush").textContent = "";
+    }
+
+    async function enviarPushClientes() {
+      const titulo = document.getElementById("pushTitulo").value.trim();
+      const mensaje = document.getElementById("pushMensaje").value.trim();
+      const urlDestino = document.getElementById("pushUrl").value.trim();
+      const feedback = document.getElementById("feedbackPush");
+      const btn = document.getElementById("btnDispararPush");
+
+      if (!titulo || !mensaje) {
+        feedback.textContent = "⚠️ Completá el título y el mensaje antes de enviar.";
+        return;
+      }
+
+      if (ONESIGNAL_APP_ID === "TU_APP_ID_DE_ONESIGNAL") {
+        feedback.textContent = "ℹ️ Modo prueba: falta configurar las credenciales de OneSignal.";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Enviando alerta...";
+      feedback.textContent = "";
+
+      const payload = {
+        app_id: ONESIGNAL_APP_ID,
+        included_segments: ["Subscribed Users"],
+        headings: { "es": titulo, "en": titulo },
+        contents: { "es": mensaje, "en": mensaje }
+      };
+
+      if (urlDestino) {
+        payload.url = urlDestino;
+      }
+
+      try {
+        const res = await fetch("https://onesignal.com/api/v1/notifications", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": `Basic ${ONESIGNAL_REST_API_KEY}`
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+
+        if (data.id) {
+          feedback.textContent = `✅ ¡Notificación enviada a ${data.recipients || 'todos los'} dispositivos!`;
+          document.getElementById("pushTitulo").value = "";
+          document.getElementById("pushMensaje").value = "";
+          document.getElementById("pushUrl").value = "";
+        } else {
+          feedback.textContent = "❌ Error al enviar. Revisá las credenciales.";
+          console.error(data);
+        }
+      } catch (err) {
+        feedback.textContent = "❌ Error de red al conectar con el servidor.";
+        console.error(err);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "🚀 Enviar Notificación a Todos";
+      }
+    }
+
+    function toggleAcordeon(cardId) {
+      const card = document.getElementById(cardId);
+      card.classList.toggle('active-accordion');
+    }
+
+    function seleccionarTipoCliente(tipo, elemento) {
+      tipoClienteSeleccionado = tipo;
+      document.querySelectorAll('.btn-type').forEach(btn => btn.classList.remove('active'));
+      elemento.classList.add('active');
+    }
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      actualizarCarritoVisual();
+    }
+
+    function actualizarCarritoVisual() {
+      const cartList = document.getElementById('cartList');
+      const totalPrecio = document.getElementById('totalPrecio');
+      const seccionPedido = document.getElementById('seccionPedido');
+      
+      if (carrito.length === 0) {
+        seccionPedido.classList.remove('visible');
+        cartList.innerHTML = '<span style="color: #777;">Aún no agregaste productos...</span>';
+        totalPrecio.textContent = '0';
+        return;
+      }
+
+      seccionPedido.classList.add('visible');
+
+      let html = '';
+      let total = 0;
+      carrito.forEach((item, index) => {
+        html += `<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <span>• ${item.nombre} - $${item.precio}</span>
+                  <button onclick="eliminarDelCarrito(${index})" style="background:none; border:none; color:#ff4d4d; cursor:pointer; font-weight:bold; font-size:12px;">✕</button>
+                </div>`;
+        total += item.precio;
+      });
+
+      cartList.innerHTML = html;
+      totalPrecio.textContent = total;
+    }
+
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      actualizarCarritoVisual();
+    }
+
+    function verificarEfectivo() {
+      const pago = document.getElementById('metodoPago').value;
+      const cambioBox = document.getElementById('cambioBox');
+      cambioBox.style.display = (pago === 'Efectivo') ? 'block' : 'none';
+    }
+
+    function procesarPedido() {
+      const nombre = document.getElementById('nombreCliente').value.trim();
+      const celular = document.getElementById('celularCliente').value.trim();
+      const direccion = document.getElementById('direccionCliente').value.trim();
+      const pago = document.getElementById('metodoPago').value;
+      const cambio = document.getElementById('cambioCliente').value.trim() || 'No necesita';
+
+      if (!nombre || !celular || !direccion) {
+        alert("Por favor completá tu nombre, celular y dirección de entrega.");
+        return;
+      }
+
+      if (carrito.length === 0) {
+        alert("El carrito está vacío. Agregá al menos un producto.");
+        return;
+      }
+
+      const btnEnviar = document.getElementById('btnEnviar');
+      btnEnviar.disabled = true;
+      btnEnviar.textContent = "Registrando pedido...";
+
+      let detalleTexto = "";
+      let detalleParaSheets = [];
+      let total = 0;
+
+      carrito.forEach(item => {
+        detalleTexto += `• ${item.nombre} ($${item.precio})\n`;
+        detalleParaSheets.push(`${item.nombre} ($${item.precio})`);
+        total += item.precio;
+      });
+
+      // Indicador [CN] para Cliente Nuevo o [CF] para Cliente Frecuente
+      const etiquetaCliente = (tipoClienteSeleccionado === 'Cliente Nuevo') ? '[CN]' : '[CF]';
+
+      let mensajeWA = `*⚡ NUEVO PEDIDO - LA BOMBONERA COMIDAS ⚡*\n\n`;
+      mensajeWA += `👤 *Cliente:* ${nombre} (${etiquetaCliente === '[CN]' ? 'Nuevo' : 'Frecuente'})\n`;
+      mensajeWA += `📱 *Celular:* ${celular}\n`;
+      mensajeWA += `📍 *Dirección:* ${direccion}\n`;
+      mensajeWA += `💳 *Pago:* ${pago}\n`;
+      if (pago === 'Efectivo') {
+        mensajeWA += `💵 *Cambio:* ${cambio}\n`;
+      }
+      mensajeWA += `\n🛒 *Detalle:*\n${detalleTexto}\n`;
+      mensajeWA += `💰 *TOTAL:* $${total}`;
+
+      const datosParaSheets = {
+        clienteTel: `${etiquetaCliente} ${nombre} (${celular}) - Dir: ${direccion}`,
+        detallesOrden: detalleParaSheets.join(", "),
+        total: total,
+        pagoInfo: pago === 'Efectivo' ? `Efectivo (Cambio: ${cambio})` : pago
+      };
+
+      const urlWA = `https://api.whatsapp.com/send?phone=${TELEFONO_WHATSAPP}&text=${encodeURIComponent(mensajeWA)}`;
+
+      fetch(GOOGLE_SHEETS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datosParaSheets)
+      }).catch(err => console.error("Error en Sheets:", err));
+
+      setTimeout(() => {
+        btnEnviar.disabled = false;
+        btnEnviar.textContent = "Pedir por WhatsApp 🚀";
+        window.open(urlWA, '_blank');
+      }, 800);
+    }
+  </script>
+</body>
+</html>
