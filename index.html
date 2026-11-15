@@ -166,7 +166,7 @@
     }
 
     .card.active-accordion .accordion-content {
-      max-height: 2500px;
+      max-height: 5500px;
       padding-top: 12px;
       border-top: 1px solid #333;
       margin-top: 10px;
@@ -199,15 +199,29 @@
       box-shadow: 0 0 10px #ffb703;
     }
 
+    .sub-cat-title {
+      color: #ffb703;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 14px 0 8px 0;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #444;
+    }
+
     .product-item {
+      background: #111;
+      border: 1px solid #333;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .product-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #111;
-      border: 1px solid #333;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
+      gap: 10px;
     }
 
     .product-info h4 {
@@ -239,10 +253,65 @@
       cursor: pointer;
       box-shadow: 0 0 8px rgba(255, 183, 3, 0.4);
       transition: transform 0.1s ease;
+      flex-shrink: 0;
     }
 
     .btn-add:active {
       transform: scale(0.95);
+    }
+
+    .customization-box {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed #333;
+    }
+
+    .custom-title {
+      font-size: 11px;
+      color: #ffb703;
+      margin-bottom: 6px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .options-grid label {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      color: #ccc;
+      font-size: 12px;
+    }
+
+    .options-grid input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+      accent-color: #ffb703;
+    }
+
+    .btn-todo-small {
+      margin-top: 6px;
+      background: #222;
+      border: 1px solid #ffb703;
+      color: #ffb703;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-todo-small:hover {
+      background: #ffb703;
+      color: #000;
     }
 
     #seccionPedido {
@@ -255,7 +324,7 @@
     }
 
     #seccionPedido.visible {
-      max-height: 800px;
+      max-height: 1100px;
       opacity: 1;
       padding: 15px;
       border: 2px solid #ffb703;
@@ -270,7 +339,7 @@
     }
 
     .cart-list {
-      max-height: 120px;
+      max-height: 140px;
       overflow-y: auto;
       margin: 8px 0;
       font-size: 13px;
@@ -316,6 +385,152 @@
       cursor: pointer;
       box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
     }
+
+    /* ESTILOS DEL MODAL ENCUADRADO Y RESPONSIVO */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      padding: 12px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      background: #121417;
+      border: 2px solid #00f0ff;
+      padding: 18px 16px;
+      width: 100%;
+      max-width: 390px;
+      border-radius: 14px;
+      color: #fff;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 240, 255, 0.25);
+      animation: modalPop 0.25s ease-out;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-sizing: border-box;
+      margin: auto;
+    }
+
+    @keyframes modalPop {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .survey-badge {
+      display: inline-block;
+      background: rgba(0, 240, 255, 0.12);
+      border: 1px solid #00f0ff;
+      color: #00f0ff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+
+    .survey-title {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0 0 6px 0;
+    }
+
+    .survey-intro {
+      font-size: 0.8rem;
+      color: #ccc;
+      margin: 0 0 12px 0;
+      line-height: 1.35;
+      background: #191d22;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border-left: 3px solid #ffb703;
+      text-align: left;
+    }
+
+    .survey-section-label {
+      font-size: 11px;
+      color: #00f0ff;
+      font-weight: bold;
+      margin: 0 0 5px 0;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .survey-check-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 10px;
+      font-size: 12px;
+    }
+
+    .survey-check-list label {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      color: #e0e0e0;
+      font-size: 12px;
+    }
+
+    .survey-check-list input[type="checkbox"] {
+      width: auto;
+      margin: 0;
+      accent-color: #00f0ff;
+    }
+
+    .partner-box {
+      background: rgba(0, 240, 255, 0.06);
+      border: 1px solid rgba(0, 240, 255, 0.35);
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .partner-box-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #00f0ff;
+      margin: 0 0 3px 0;
+      display: block;
+    }
+
+    .partner-box-desc {
+      font-size: 11px;
+      color: #bbb;
+      margin: 0 0 7px 0;
+      line-height: 1.3;
+    }
+
+    .partner-input {
+      margin: 0 !important;
+      padding: 8px 10px !important;
+      font-size: 12.5px !important;
+      background: #0d0f12 !important;
+      border: 1px solid #3a444e !important;
+      border-radius: 6px !important;
+    }
+
+    .partner-input:focus {
+      border-color: #00f0ff !important;
+      box-shadow: 0 0 6px rgba(0, 240, 255, 0.4) !important;
+    }
+
+    .success-icon {
+      font-size: 3.2rem;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
@@ -329,7 +544,7 @@
 
   <!-- Marquesina superior rápida -->
   <div class="marquee-container">
-    <div class="marquee-text">⚡ LA BOMBONERA COMIDAS • PEDÍ TUS HAMBURGUESAS Y LOMOS SIN ESPERAS • ¡EL SABOR MÁS RÁPIDO! ⚡</div>
+    <div class="marquee-text">⚡ LA BOMBONERA COMIDAS • PEDÍ TUS HAMBURGUESAS, CHIVITOS Y MILANESAS SIN ESPERAS • ¡EL SABOR MÁS RÁPIDO! ⚡</div>
   </div>
 
   <div class="container">
@@ -338,55 +553,8 @@
       <h1 class="titulo-reflectante">La Bombonera Comidas</h1>
     </div>
 
-    <!-- SECCIÓN VALIDACIÓN DE MERCADO Y CAPTURA INICIAL (QR) -->
-    <div class="card" id="seccionValidacionQR" style="border: 2px solid #ffb703; background: rgba(15, 15, 15, 0.98); margin-bottom: 20px;">
-      <div style="text-align: center; margin-bottom: 12px;">
-        <span style="background: #ffb703; color: #000; font-size: 11px; font-weight: 900; padding: 3px 8px; border-radius: 4px; text-transform: uppercase;">Prueba de Lanzamiento</span>
-        <h3 style="color: #ffb703; margin: 8px 0 4px 0; font-size: 19px;">⚡ ¿Te imaginás todo en un solo lugar? ⚡</h3>
-        <p style="font-size: 13px; color: #ccc; line-height: 1.4; margin: 0;">
-          Estamos creando una nueva app local para conectar <strong>gimnasios, tiendas de suplementos, ropa deportiva y raciones para mascotas</strong>. 
-        </p>
-      </div>
-
-      <div style="background: rgba(255, 183, 3, 0.05); border-left: 3px solid #ffb703; padding: 10px; border-radius: 4px; margin-bottom: 12px; font-size: 12px; color: #ffca28;">
-        💡 Contanos qué te parece para saber si hay demanda real y enterate antes que nadie. ¡Al terminar se abre la carta de La Bombonera! 👇
-      </div>
-
-      <label style="font-size: 13px; color: #ccc; margin-top: 5px;">Tu Nombre:</label>
-      <input type="text" id="valNombre" placeholder="Ej: Juan Pérez" style="margin-bottom: 10px; padding: 10px;">
-
-      <label style="font-size: 13px; color: #ccc; margin-top: 0;">Tu Celular / WhatsApp:</label>
-      <input type="tel" id="valTelefono" placeholder="Ej: 099 123 456" style="margin-bottom: 12px; padding: 10px;">
-
-      <label style="font-size: 13px; color: #ffb703; font-weight: bold; margin-bottom: 6px;">¿Qué te interesaría encontrar más?</label>
-      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; font-size: 13px;">
-        <label style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <input type="checkbox" name="valRubro" value="Gimnasios" style="width: auto; margin: 0; accent-color: #ffb703;"> 💪 Gimnasios y entrenamiento
-        </label>
-        <label style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <input type="checkbox" name="valRubro" value="Suplementos" style="width: auto; margin: 0; accent-color: #ffb703;"> 💊 Tiendas de suplementos
-        </label>
-        <label style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <input type="checkbox" name="valRubro" value="Ropa Deportiva" style="width: auto; margin: 0; accent-color: #ffb703;"> 👕 Ropa y accesorios deportivos
-        </label>
-        <label style="margin: 0; display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <input type="checkbox" name="valRubro" value="Raciones Mascotas" style="width: auto; margin: 0; accent-color: #ffb703;"> 🐾 Raciones y accesorios para mascotas
-        </label>
-      </div>
-
-      <!-- Caza de Dueños o Negocios -->
-      <label style="font-size: 13px; color: #ccc; margin-top: 5px;">¿Tenés algún negocio o conocés a alguien que le interese estar?</label>
-      <input type="text" id="valNegocio" placeholder="Ej: Sí, tengo un local / Conozco a..." style="margin-bottom: 15px; padding: 10px;">
-
-      <button class="btn-pay" id="btnEnviarValidacion" onclick="completarValidacionYAbrirMenu()" style="background: #ffb703; color: #000; font-weight: 900; box-shadow: 0 0 12px rgba(255, 183, 3, 0.5); padding: 14px;">
-        🚀 ¡Listo, ver el menú de La Bombonera!
-      </button>
-      
-      <p id="valFeedback" style="font-size: 12px; text-align: center; color: #25d366; margin-top: 8px; font-weight: bold;"></p>
-    </div>
-
-    <!-- MENÚ DE COMIDA (Oculto hasta que completan la encuesta) -->
-    <div id="menuComidaPrincipal" style="display: none;">
+    <!-- MENÚ DE COMIDA DIRECTO -->
+    <div id="menuComidaPrincipal">
 
       <!-- 1. Tipo de cliente -->
       <div class="card active-accordion" id="cardCliente">
@@ -399,441 +567,42 @@
         </div>
       </div>
 
-      <!-- 2. Menú de Productos -->
+      <!-- 2. Menú de Productos Completo -->
       
-      <!-- Milanesas de Carne -->
+      <!-- MILANESAS DE CARNE -->
       <div class="card" id="catCarne">
-        <h3 class="accordion-header" onclick="toggleAcordeon('catCarne')">Milanesas de Carne</h3>
-        <div class="accordion-content">
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne en 1 pan común</h4>
-              <p>Lechuga, tomate, aderezos, huevo duro</p>
-              <span class="price">$200</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan común', 200)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne en 1 pan con fritas</h4>
-              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-              <span class="price">$240</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan con fritas', 240)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne en 2 panes común</h4>
-              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-              <span class="price">$470</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 2 panes común', 470)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne en 1 pan completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$320</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 1 pan completa con fritas', 320)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne en 2 panes completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$520</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 2 panes completa con fritas', 520)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne en 3 panes completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$640</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 3 panes completa con fritas', 640)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne en 4 panes completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$850</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne en 4 panes completa con fritas', 850)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Caja 4 milanesas (Carne)</h4>
-              <p>1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada</p>
-              <span class="price">$990</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Caja 4 milanesas (Carne)', 990)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Baño de Cheddar y Bacon a las papas</h4>
-              <p>Extra para acompañar tus papas</p>
-              <span class="price">$140</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Baño de Cheddar y Bacon a las papas', 140)">Agregar</button>
-          </div>
-        </div>
+        <h3 class="accordion-header" onclick="toggleAcordeon('catCarne')">🥩 Milanesas de Carne</h3>
+        <div class="accordion-content" id="listCarne"></div>
       </div>
 
-      <!-- Milanesas de Pollo -->
+      <!-- MILANESAS DE POLLO -->
       <div class="card" id="catPollo">
-        <h3 class="accordion-header" onclick="toggleAcordeon('catPollo')">Milanesas de Pollo</h3>
-        <div class="accordion-content">
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo en 1 pan común</h4>
-              <p>Aderezos, lechuga, tomate, huevo duro</p>
-              <span class="price">$180</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan común', 180)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo en 1 pan con fritas</h4>
-              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-              <span class="price">$210</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan con fritas', 210)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo en 2 panes común</h4>
-              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-              <span class="price">$410</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 2 panes común', 410)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo en 1 pan completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$300</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 1 pan completa con fritas', 300)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo en 2 panes completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$470</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 2 panes completa con fritas', 470)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo en 3 panes completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$600</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 3 panes completa con fritas', 600)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo en 4 panes completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$820</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo en 4 panes completa con fritas', 820)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Caja 4 milanesas (Pollo)</h4>
-              <p>1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada</p>
-              <span class="price">$900</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Caja 4 milanesas (Pollo)', 900)">Agregar</button>
-          </div>
-        </div>
+        <h3 class="accordion-header" onclick="toggleAcordeon('catPollo')">🍗 Milanesas de Pollo</h3>
+        <div class="accordion-content" id="listPollo"></div>
       </div>
 
-      <!-- Milanesas al Plato & Promos -->
+      <!-- MILANESAS AL PLATO & PROMOS -->
       <div class="card" id="catPlato">
-        <h3 class="accordion-header" onclick="toggleAcordeon('catPlato')">Milanesas al Plato & Promos</h3>
-        <div class="accordion-content">
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne al plato con fritas</h4>
-              <span class="price">$270</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne al plato con fritas', 270)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo al plato con fritas</h4>
-              <span class="price">$240</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo al plato con fritas', 240)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Carne completa con fritas (Al plato)</h4>
-              <span class="price">$300</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Carne completa con fritas (Al plato)', 300)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Mila Pollo completa con fritas (Al plato)</h4>
-              <span class="price">$280</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Mila Pollo completa con fritas (Al plato)', 280)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Carne Cheddar y Bacon + Huevo frito y fritas</h4>
-              <span class="price">$470</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Carne Cheddar y Bacon + Huevo frito y fritas', 470)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Pollo Cheddar y Bacon + Huevo frito y fritas</h4>
-              <span class="price">$450</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Pollo Cheddar y Bacon + Huevo frito y fritas', 450)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Napolitana Carne con fritas</h4>
-              <span class="price">$470</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Napolitana Carne con fritas', 470)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Napolitana Pollo con fritas</h4>
-              <span class="price">$430</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Napolitana Pollo con fritas', 430)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Napo P2 Carne</h4>
-              <span class="price">$570</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Napo P2 Carne', 570)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Napo P2 Pollo</h4>
-              <span class="price">$550</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Napo P2 Pollo', 550)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Promo: 2 Milas completas con fritas</h4>
-              <span class="price">$500</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Milas completas con fritas', 500)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Promo: 2 Milas a caballo con fritas</h4>
-              <span class="price">$520</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Milas a caballo con fritas', 520)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Promo: 3 Milas a caballo con fritas</h4>
-              <span class="price">$640</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Promo: 3 Milas a caballo con fritas', 640)">Agregar</button>
-          </div>
-        </div>
+        <h3 class="accordion-header" onclick="toggleAcordeon('catPlato')">🍽️ Milanesas al Plato & Promos</h3>
+        <div class="accordion-content" id="listPlato"></div>
       </div>
 
-      <!-- Hamburguesas Caseras & Promos -->
+      <!-- HAMBURGUESAS CASERAS & PROMOS -->
       <div class="card" id="catBurgers">
-        <h3 class="accordion-header" onclick="toggleAcordeon('catBurgers')">Hamburguesas Caseras & Promos</h3>
-        <div class="accordion-content">
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Hamburguesa común c/ fritas</h4>
-              <p>Lechuga, tomate, aderezos, huevo duro</p>
-              <span class="price">$140</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa común c/ fritas', 140)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Hamburguesa c/ huevo frito y fritas</h4>
-              <p>Lechuga, tomate, aderezos, huevo duro, fritas</p>
-              <span class="price">$180</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa c/ huevo frito y fritas', 180)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Hamburguesa Completa</h4>
-              <p>Lechuga, tomate, aderezos, huevo frito, jamón, muzza, bacon, fritas</p>
-              <span class="price">$250</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa Completa', 250)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Hamburguesa Cheddar y Bacon</h4>
-              <p>Aderezos, lechuga, tomate, cheddar, bacon, huevo frito, fritas</p>
-              <span class="price">$250</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Hamburguesa Cheddar y Bacon', 250)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Promo: Caja 4 hamburguesas Completas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito y muchas fritas</p>
-              <span class="price">$800</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 hamburguesas Completas', 800)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Promo: Caja 4 hamburguesas comunes</h4>
-              <p>Aderezos, lechuga, tomate, huevo duro, muchas fritas</p>
-              <span class="price">$580</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 hamburguesas comunes', 580)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Promo: Caja 4 Hamburguesas cheddar y bacon</h4>
-              <p>Aderezos, lechuga, tomate, cheddar, bacon, huevo frito y muchas fritas</p>
-              <span class="price">$800</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Promo: Caja 4 Hamburguesas cheddar y bacon', 800)">Agregar</button>
-          </div>
-        </div>
+        <h3 class="accordion-header" onclick="toggleAcordeon('catBurgers')">🍔 Hamburguesas Caseras & Promos</h3>
+        <div class="accordion-content" id="listBurgers"></div>
       </div>
 
-      <!-- Chivitos -->
+      <!-- CHIVITOS -->
       <div class="card" id="catChivitos">
-        <h3 class="accordion-header" onclick="toggleAcordeon('catChivitos')">Chivitos</h3>
-        <div class="accordion-content">
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Chivito en 1 pan Completo</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito</p>
-              <span class="price">$350</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Chivito en 1 pan Completo', 350)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Chivito en 2 Panes Completo</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas</p>
-              <span class="price">$650</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Chivito en 2 Panes Completo', 650)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Chivito en 3 Panes Completa con fritas</h4>
-              <p>Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas</p>
-              <span class="price">$900</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Chivito en 3 Panes Completa con fritas', 900)">Agregar</button>
-          </div>
-        </div>
+        <h3 class="accordion-header" onclick="toggleAcordeon('catChivitos')">🥪 Chivitos</h3>
+        <div class="accordion-content" id="listChivitos"></div>
       </div>
 
-      <!-- Panchos & Promos -->
+      <!-- PANCHOS & PROMOS -->
       <div class="card" id="catPanchos">
-        <h3 class="accordion-header" onclick="toggleAcordeon('catPanchos')">Panchos & Promos</h3>
-        <div class="accordion-content">
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Pancho Común</h4>
-              <p>Aderezos, papitas</p>
-              <span class="price">$65</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Pancho Común', 65)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Pancho Napolitano</h4>
-              <p>Salsa pizzera casera, muzza, orégano</p>
-              <span class="price">$90</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Pancho Napolitano', 90)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Pancho Cheddar Bacon</h4>
-              <span class="price">$90</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Pancho Cheddar Bacon', 90)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Pancho Completo</h4>
-              <p>Jamón, muzza, bacon, huevo duro (aceitunas a elección)</p>
-              <span class="price">$100</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Pancho Completo', 100)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos Comunes + Fritas</h4>
-              <span class="price">$600</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos Comunes + Fritas', 600)">Agregar</button>
-          </div>
-
-          <div class="product-item">
-            <div class="product-info">
-              <h4>Promo: La Caja Loca</h4>
-              <p>6 panchos a elección + fritas + cheddar y bacon</p>
-              <span class="price">$800</span>
-            </div>
-            <button class="btn-add" onclick="agregarAlCarrito('Promo: La Caja Loca', 800)">Agregar</button>
-          </div>
-        </div>
+        <h3 class="accordion-header" onclick="toggleAcordeon('catPanchos')">🌭 Panchos & Promos</h3>
+        <div class="accordion-content" id="listPanchos"></div>
       </div>
 
       <!-- 3. Resumen, Datos de Envío y Pago -->
@@ -871,7 +640,62 @@
           <input type="text" id="cambioCliente" placeholder="Ej: Cambio de $1000">
         </div>
 
-        <button class="btn-pay" id="btnEnviar" onclick="procesarPedido()">Pedir por WhatsApp 🚀</button>
+        <!-- Botón que intercepta y lanza el Cuestionario -->
+        <button class="btn-pay" id="btnOrdenarInterceptar">Pedir por WhatsApp 🚀</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL DEL CUESTIONARIO (Encuadrado, con tono de culpa/entrenamiento y captación) -->
+  <div id="survey-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      
+      <!-- Vista del Cuestionario -->
+      <div id="survey-form-container">
+        <span class="survey-badge">⚡ Mini Radar • 10 Segundos</span>
+        <h3 class="survey-title">¡Uyy, dame solo 2 segundos!</h3>
+        <p class="survey-intro">
+          Nuestras comidas son un manjar y es muy fácil volverse adicto 😋. Para no sentirnos tan culpables, pensando en ustedes les contamos de un nuevo proyecto para personas que además de comer rico, se ejercitan fuerte, con seriedad y compromiso (gimnasios, suplementos, ropa y mascotas):
+        </p>
+        
+        <form id="quick-survey-form" style="text-align: left;">
+          
+          <span class="survey-section-label">1. ¿Qué rubro te interesa más encontrar?</span>
+          <div class="survey-check-list">
+            <label><input type="checkbox" name="valRubro" value="Gimnasios"> 💪 Gimnasios y entrenamiento</label>
+            <label><input type="checkbox" name="valRubro" value="Suplementos"> 💊 Tiendas de suplementos</label>
+            <label><input type="checkbox" name="valRubro" value="Ropa Deportiva"> 👕 Ropa y accesorios deportivos</label>
+            <label><input type="checkbox" name="valRubro" value="Raciones Mascotas"> 🐾 Raciones y accesorios para mascotas</label>
+          </div>
+
+          <span class="survey-section-label">2. ¿Cómo nos conociste?</span>
+          <div class="survey-check-list">
+            <label><input type="checkbox" name="valConocio" value="QR"> 📱 Código QR</label>
+            <label><input type="checkbox" name="valConocio" value="Instagram"> 📸 Instagram</label>
+            <label><input type="checkbox" name="valConocio" value="Recomendación"> 🗣️ Recomendación</label>
+            <label><input type="checkbox" name="valConocio" value="Pasando por el local"> 🚶 Pasando por el local</label>
+          </div>
+
+          <!-- Bloque profesional B2B con la frase exacta -->
+          <div class="partner-box">
+            <span class="partner-box-title">🤝 Espacio Comercios & Aliados</span>
+            <p class="partner-box-desc">
+              Si estás interesado en formar parte dejanos tu número y nosotros nos ponemos en contacto:
+            </p>
+            <input type="text" id="valNegocio" class="partner-input" placeholder="Nombre del local y Celular (Ej: Gym Fit - 099...)">
+          </div>
+
+          <button type="submit" class="btn-pay" style="background: #00f0ff; color: #000; font-weight: 900; padding: 12px; font-size: 14px; box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);">¡Listo, enviar mi pedido! 🚀</button>
+        </form>
+      </div>
+
+      <!-- Vista de Éxito -->
+      <div id="survey-success-container" style="display: none;">
+        <div class="success-icon">✅</div>
+        <h3 style="color: #00f0ff; margin-bottom: 10px;">¡Tu orden ya fue enviada con éxito!</h3>
+        <p style="color: #ddd; font-size: 0.85rem; margin-bottom: 15px;">Gracias por responder. En breve nos pondremos en contacto contigo por WhatsApp.</p>
+        <button id="close-modal-btn" class="btn-pay" style="background: #00f0ff; color: #000; font-weight: 900; padding: 12px;">Entendido</button>
       </div>
 
     </div>
@@ -880,62 +704,133 @@
   <script>
     let tipoClienteSeleccionado = 'Cliente Nuevo';
     let carrito = [];
+    let pedidoTemporalData = null;
     
     const GOOGLE_SHEETS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtthYzSNDPpV9zlCqJ9eUszjQN_bISSQlEoOmViaxHO2ygo2_uGIpY0tf7X0CB7P1D/exec";
     const GOOGLE_SHEETS_URL_ENCUESTA = "https://script.google.com/macros/s/AKfycbxjDqel4zzE-oDkogL5oZwEcEGRN_HBkTMMnbKw7uBfhn534tzAK1swF99eUjcWLzMHNA/exec";
     const TELEFONO_WHATSAPP = "59898780297";
 
-    // Función para procesar la encuesta inicial de QR y abrir el menú
-    async function completarValidacionYAbrirMenu() {
-      const nombre = document.getElementById('valNombre').value.trim();
-      const telefono = document.getElementById('valTelefono').value.trim();
-      const negocio = document.getElementById('valNegocio').value.trim() || "Ninguno / No especifica";
-      const feedback = document.getElementById('valFeedback');
-      const btn = document.getElementById('btnEnviarValidacion');
+    // BASE DE DATOS COMPLETA DEL MENÚ (2 HOJAS)
+    const menuData = {
+      listCarne: [
+        { id: "mc1", nombre: "Mila Carne en 1 pan común", desc: "Lechuga, tomate, aderezos, huevo duro", precio: 200 },
+        { id: "mc2", nombre: "Mila Carne en 1 pan con fritas", desc: "Lechuga, tomate, aderezos, huevo duro, fritas", precio: 240 },
+        { id: "mc3", nombre: "Mila Carne en 2 panes común", desc: "Lechuga, tomate, aderezos, huevo duro, fritas", precio: 470 },
+        { id: "mc4", nombre: "Mila Carne en 1 pan completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 320 },
+        { id: "mc5", nombre: "Mila Carne en 2 panes completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 520 },
+        { id: "mc6", nombre: "Mila Carne en 3 panes completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 640 },
+        { id: "mc7", nombre: "Mila Carne en 4 panes completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 850 },
+        { id: "mc8", nombre: "Caja 4 milanesas de Carne", desc: "1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada", precio: 990 },
+        { id: "mc9", nombre: "Baño de Cheddar y Bacon a las papas", desc: "Extra para acompañar tus papas fritas", precio: 140, sinPersonalizar: true }
+      ],
+      listPollo: [
+        { id: "mp1", nombre: "Mila Pollo en 1 pan común", desc: "Aderezos, lechuga, tomate, huevo duro", precio: 180 },
+        { id: "mp2", nombre: "Mila Pollo en 1 pan con fritas", desc: "Lechuga, tomate, aderezos, huevo duro, fritas", precio: 210 },
+        { id: "mp3", nombre: "Mila Pollo en 2 panes común", desc: "Lechuga, tomate, aderezos, huevo duro, fritas", precio: 410 },
+        { id: "mp4", nombre: "Mila Pollo en 1 pan completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 300 },
+        { id: "mp5", nombre: "Mila Pollo en 2 panes completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 470 },
+        { id: "mp6", nombre: "Mila Pollo en 3 panes completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 600 },
+        { id: "mp7", nombre: "Mila Pollo en 4 panes completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 820 },
+        { id: "mp8", nombre: "Caja 4 milanesas de Pollo", desc: "1 mila a caballo, 1 napo, 1 completa, 1 cheddar y bacon todo con huevo frito, colchón de fritas y ensalada", precio: 900 },
+        { id: "mp9", nombre: "Baño de Cheddar y Bacon a las papas", desc: "Extra para acompañar tus papas fritas", precio: 140, sinPersonalizar: true }
+      ],
+      listPlato: [
+        { id: "mpl1", nombre: "Mila Carne al plato con fritas", desc: "Milanesa de carne al plato acompañada de papas fritas", precio: 270 },
+        { id: "mpl2", nombre: "Mila Pollo al plato con fritas", desc: "Milanesa de pollo al plato acompañada de papas fritas", precio: 240 },
+        { id: "mpl3", nombre: "Mila Carne completa con fritas", desc: "Milanesa de carne completa al plato con papas fritas", precio: 300 },
+        { id: "mpl4", nombre: "Mila Pollo completa con fritas", desc: "Milanesa de pollo completa al plato con papas fritas", precio: 280 },
+        { id: "mpl5", nombre: "Mila Carne Cheddar y Bacon + huevo frito y fritas", desc: "Al plato con cheddar, bacon, huevo frito y fritas", precio: 470 },
+        { id: "mpl6", nombre: "Mila Pollo Cheddar y Bacon + huevo frito y fritas", desc: "Al plato con cheddar, bacon, huevo frito y fritas", precio: 450 },
+        { id: "mpl7", nombre: "Napolitana de Carne con fritas", desc: "Milanesa de carne a la napolitana con fritas", precio: 470 },
+        { id: "mpl8", nombre: "Napolitana de Pollo con fritas", desc: "Milanesa de pollo a la napolitana con fritas", precio: 430 },
+        { id: "mpl9", nombre: "Napo P2 (Carne)", desc: "Napolitana de carne para compartir (2 personas) con fritas", precio: 570 },
+        { id: "mpl10", nombre: "Napo P2 (Pollo)", desc: "Napolitana de pollo para compartir (2 personas) con fritas", precio: 550 },
+        { subtitulo: "🔥 PROMOS AL PLATO" },
+        { id: "mpl11", nombre: "Promo: 2 Milas completas con fritas", desc: "2 milanesas completas acompañadas de fritas", precio: 500 },
+        { id: "mpl12", nombre: "Promo: 2 Milas a caballo con fritas", desc: "2 milanesas a caballo acompañadas de fritas", precio: 520 },
+        { id: "mpl13", nombre: "Promo: 3 Milas a caballo con fritas", desc: "3 milanesas a caballo acompañadas de fritas", precio: 640 }
+      ],
+      listBurgers: [
+        { id: "hb1", nombre: "Hamburguesa común c/ fritas", desc: "Lechuga, tomate, aderezos, huevo duro", precio: 140 },
+        { id: "hb2", nombre: "Hamburguesa c/ huevo frito y fritas", desc: "Lechuga, tomate, aderezos, huevo duro, fritas", precio: 180 },
+        { id: "hb3", nombre: "Hamburguesa Completa", desc: "Lechuga, tomate, aderezos, huevo frito, jamón, muzza, bacon, fritas", precio: 250 },
+        { id: "hb4", nombre: "Hamburguesa Cheddar y Bacon", desc: "Aderezos, lechuga, tomate, cheddar, bacon, huevo frito, fritas", precio: 250 },
+        { subtitulo: "🔥 PROMOS HAMBURGUESAS" },
+        { id: "hb5", nombre: "Caja 4 Hamburguesas Completas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito y muchas fritas", precio: 800 },
+        { id: "hb6", nombre: "Caja 4 Hamburguesas Comunes", desc: "Aderezos, lechuga, tomate, huevo duro y muchas fritas", precio: 580 },
+        { id: "hb7", nombre: "Caja 4 Hamburguesas Cheddar y Bacon", desc: "Aderezos, lechuga, tomate, cheddar, bacon, huevo frito y muchas fritas", precio: 800 },
+        { id: "hb8", nombre: "Baño de Cheddar y Bacon a las papas", desc: "Extra para acompañar tus papas fritas", precio: 140, sinPersonalizar: true }
+      ],
+      listChivitos: [
+        { id: "ch1", nombre: "Chivito en 1 pan Completo", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito", precio: 350 },
+        { id: "ch2", nombre: "Chivito en 2 panes Completo", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas", precio: 650 },
+        { id: "ch3", nombre: "Chivito en 3 panes Completa con fritas", desc: "Aderezos, lechuga, tomate, jamón, muzza, bacon, huevo frito, fritas", precio: 900 },
+        { id: "ch4", nombre: "Baño de Cheddar y Bacon a las papas", desc: "Extra para acompañar tus papas fritas", precio: 140, sinPersonalizar: true }
+      ],
+      listPanchos: [
+        { id: "pn1", nombre: "Pancho Común", desc: "Aderezos, papitas", precio: 65 },
+        { id: "pn2", nombre: "Pancho Napolitano", desc: "Salsa pizzera casera, muzza, orégano", precio: 90 },
+        { id: "pn3", nombre: "Pancho Cheddar Bacon", desc: "Salsa cheddar, bacon crocante y aderezos", precio: 90 },
+        { id: "pn4", nombre: "Pancho Completo", desc: "Jamón, muzza, bacon, huevo duro (aceitunas a elección)", precio: 100 },
+        { subtitulo: "🔥 PROMOS PANCHOS & COMBOS" },
+        { id: "pn5", nombre: "Promo: 2 Hamburguesas Cheddar Bacon + 2 Panchos comunes + fritas", desc: "Combo súper completo con papas fritas", precio: 600 },
+        { id: "pn6", nombre: "Promo: 2 Hamburguesas Completas + 2 Panchos + fritas", desc: "Combo completo para compartir con fritas", precio: 600 },
+        { id: "pn7", nombre: "LA CAJA LOCA: 6 Panchos a elección + fritas + Cheddar y Bacon", desc: "6 panchos a elección bañados con fritas, cheddar y bacon", precio: 800 }
+      ]
+    };
 
-      if (!nombre || !telefono) {
-        alert("Por favor completá tu nombre y celular para continuar al menú.");
-        return;
-      }
+    // Renderiza todos los productos manteniendo los checkboxes y botones ¡TODO!
+    function renderizarMenuCompleto() {
+      for (const [contenedorId, items] of Object.entries(menuData)) {
+        const contenedor = document.getElementById(contenedorId);
+        let html = "";
 
-      const checkboxes = document.querySelectorAll('input[name="valRubro"]:checked');
-      let rubros = [];
-      checkboxes.forEach((cb) => { rubros.push(cb.value); });
+        items.forEach(item => {
+          if (item.subtitulo) {
+            html += `<div class="sub-cat-title">${item.subtitulo}</div>`;
+            return;
+          }
 
-      if (rubros.length === 0) {
-        alert("Por favor seleccioná al menos una opción que te interese.");
-        return;
-      }
+          let bloquePersonalizacion = "";
+          if (!item.sinPersonalizar) {
+            bloquePersonalizacion = `
+              <div class="customization-box">
+                <div class="custom-title">Personalizá tus gustos:</div>
+                <div class="options-grid">
+                  <label><input type="checkbox" value="Pickles" class="opt-${item.id}"> Pickles</label>
+                  <label><input type="checkbox" value="Hongos" class="opt-${item.id}"> Hongos</label>
+                  <label><input type="checkbox" value="Mayonesa" class="opt-${item.id}" checked> Mayonesa</label>
+                  <label><input type="checkbox" value="Mostaza" class="opt-${item.id}" checked> Mostaza</label>
+                  <label><input type="checkbox" value="Ketchup" class="opt-${item.id}" checked> Ketchup</label>
+                  <label><input type="checkbox" value="Sin Lechuga" class="opt-${item.id}"> Sin lechuga</label>
+                  <label><input type="checkbox" value="Sin Tomate" class="opt-${item.id}"> Sin tomate</label>
+                </div>
+                <button class="btn-todo-small" onclick="marcarTodo('${item.id}')">✨ ¡TODO!</button>
+              </div>
+            `;
+          }
 
-      btn.disabled = true;
-      btn.textContent = "Guardando y abriendo menú...";
-
-      const datosValidacion = {
-        nombre: nombre,
-        telefono: telefono,
-        intereses: rubros.join(", "),
-        negocioContacto: negocio
-      };
-
-      try {
-        await fetch(GOOGLE_SHEETS_URL_ENCUESTA, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(datosValidacion)
+          html += `
+            <div class="product-item" data-id="${item.id}">
+              <div class="product-top">
+                <div class="product-info">
+                  <h4>${item.nombre}</h4>
+                  <p>${item.desc}</p>
+                  <span class="price">$${item.precio}</span>
+                </div>
+                <button class="btn-add" onclick="agregarAlCarrito('${item.nombre}', ${item.precio}, '${item.id}')">Agregar</button>
+              </div>
+              ${bloquePersonalizacion}
+            </div>
+          `;
         });
-      } catch (err) {
-        console.error("Error al registrar validación:", err);
-      }
 
-      feedback.textContent = "✅ ¡Gracias! Abriendo La Bombonera...";
-      
-      setTimeout(() => {
-        document.getElementById('seccionValidacionQR').style.display = 'none';
-        document.getElementById('menuComidaPrincipal').style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 600);
+        contenedor.innerHTML = html;
+      }
     }
+
+    // Inicializamos el menú al cargar
+    renderizarMenuCompleto();
 
     function toggleAcordeon(cardId) {
       const card = document.getElementById(cardId);
@@ -948,8 +843,22 @@
       elemento.classList.add('active');
     }
 
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
+    function marcarTodo(productId) {
+      const checkboxes = document.querySelectorAll('.opt-' + productId);
+      checkboxes.forEach(cb => cb.checked = true);
+    }
+
+    function agregarAlCarrito(nombre, precio, productId) {
+      const checkboxes = document.querySelectorAll('.opt-' + productId + ':checked');
+      let personalizados = [];
+      checkboxes.forEach(cb => personalizados.push(cb.value));
+
+      let nombreConDetalle = nombre;
+      if (personalizados.length > 0) {
+        nombreConDetalle += ` [Gustos: ${personalizados.join(", ")}]`;
+      }
+
+      carrito.push({ nombre: nombreConDetalle, precio });
       actualizarCarritoVisual();
     }
 
@@ -992,7 +901,8 @@
       cambioBox.style.display = (pago === 'Efectivo') ? 'block' : 'none';
     }
 
-    function procesarPedido() {
+    // 1. Interceptamos el botón de pedir para abrir el modal con el cuestionario
+    document.getElementById('btnOrdenarInterceptar').addEventListener('click', () => {
       const nombre = document.getElementById('nombreCliente').value.trim();
       const celular = document.getElementById('celularCliente').value.trim();
       const direccion = document.getElementById('direccionCliente').value.trim();
@@ -1000,7 +910,7 @@
       const cambio = document.getElementById('cambioCliente').value.trim() || 'No necesita';
 
       if (!nombre || !celular || !direccion) {
-        alert("Por favor completá tu nombre, celular y dirección de entrega.");
+        alert("Por favor completá tu nombre, celular y dirección de entrega antes de pedir.");
         return;
       }
 
@@ -1009,17 +919,13 @@
         return;
       }
 
-      const btnEnviar = document.getElementById('btnEnviar');
-      btnEnviar.disabled = true;
-      btnEnviar.textContent = "Registrando pedido...";
-
       let detalleTexto = "";
       let detalleParaSheets = [];
       let total = 0;
 
       carrito.forEach(item => {
         detalleTexto += `• ${item.nombre} ($${item.precio})\n`;
-        detalleParaSheets.push(`${item.nombre} ($${item.precio})`);
+        detalleParaSheets.push(item.nombre);
         total += item.precio;
       });
 
@@ -1043,21 +949,71 @@
         pagoInfo: pago === 'Efectivo' ? `Efectivo (Cambio: ${cambio})` : pago
       };
 
-      const urlWA = `https://api.whatsapp.com/send?phone=${TELEFONO_WHATSAPP}&text=${encodeURIComponent(mensajeWA)}`;
+      pedidoTemporalData = { mensajeWA, datosParaSheets, nombre, celular };
 
+      // Mostramos el modal con el cuestionario
+      document.getElementById('survey-form-container').style.display = 'block';
+      document.getElementById('survey-success-container').style.display = 'none';
+      document.getElementById('survey-modal').style.display = 'flex';
+    });
+
+    // 2. Al completar el cuestionario relámpago
+    document.getElementById('quick-survey-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const rubrosChecks = document.querySelectorAll('input[name="valRubro"]:checked');
+      let rubrosArr = [];
+      rubrosChecks.forEach(cb => rubrosArr.push(cb.value));
+
+      const conocioChecks = document.querySelectorAll('input[name="valConocio"]:checked');
+      let conocioArr = [];
+      conocioChecks.forEach(cb => conocioArr.push(cb.value));
+
+      const negocio = document.getElementById('valNegocio').value.trim() || "Ninguno / No especifica";
+
+      const interesesTexto = rubrosArr.length > 0 ? rubrosArr.join(", ") : "No especifica";
+      const conocioTexto = conocioArr.length > 0 ? conocioArr.join(", ") : "No especifica";
+
+      let mensajeFinalConEncuesta = pedidoTemporalData.mensajeWA + `\n\n*(Conoció por: ${conocioTexto} | Intereses: ${interesesTexto})*`;
+      pedidoTemporalData.datosParaSheets.detallesOrden += ` | Conoció por: ${conocioTexto} | Intereses: ${interesesTexto}`;
+
+      const datosValidacionEncuesta = {
+        nombre: pedidoTemporalData.nombre,
+        telefono: pedidoTemporalData.celular,
+        intereses: interesesTexto,
+        negocioContacto: `Conoció por: ${conocioTexto} - Negocio/Tel: ${negocio}`
+      };
+
+      const urlWA = `https://api.whatsapp.com/send?phone=${TELEFONO_WHATSAPP}&text=${encodeURIComponent(mensajeFinalConEncuesta)}`;
+
+      // 1. Registramos el pedido en Google Sheets principal
       fetch(GOOGLE_SHEETS_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(datosParaSheets)
-      }).catch(err => console.error("Error en Sheets:", err));
+        body: JSON.stringify(pedidoTemporalData.datosParaSheets)
+      }).catch(err => console.error("Error en Sheets Pedido:", err));
 
-      setTimeout(() => {
-        btnEnviar.disabled = false;
-        btnEnviar.textContent = "Pedir por WhatsApp 🚀";
-        window.open(urlWA, '_blank');
-      }, 800);
-    }
+      // 2. Registramos las respuestas de la encuesta en su respectiva hoja de Google Sheets
+      fetch(GOOGLE_SHEETS_URL_ENCUESTA, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datosValidacionEncuesta)
+      }).catch(err => console.error("Error en Sheets Encuesta:", err));
+
+      // Abrimos WhatsApp
+      window.open(urlWA, '_blank');
+
+      // Cambiamos el modal al texto de éxito
+      document.getElementById('survey-form-container').style.display = 'none';
+      document.getElementById('survey-success-container').style.display = 'block';
+    });
+
+    // 3. Botón final "Entendido"
+    document.getElementById('close-modal-btn').addEventListener('click', () => {
+      document.getElementById('survey-modal').style.display = 'none';
+    });
   </script>
 </body>
 </html>
